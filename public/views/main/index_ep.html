@@ -1,0 +1,17 @@
+{% extends layouts %} 
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="logo" align="center"><img src="{{ __img('logo.png') }}" class="img-fluid"></div>
+            <div class="col-md-12 titlesite">{{ __msg('site-title') }}</div>
+            <div class="col-md-12 epaphrodite" align="center">
+                <h1>Welcome</h1>
+                <a href="{{ __path('login') }}"> AUTHENTIFICATION <i class="icofont-long-arrow-right"></i></a>
+            </div>
+            <div class="container pt-20" align="center">
+                {{ __QRCodes('https://epaphrodite.org') }}
+                <p>Authentic</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

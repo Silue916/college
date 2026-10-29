@@ -1,0 +1,48 @@
+{% extends layouts %}
+{% from breadcrumb import breadcrumb_field %} 
+{% from forms import checkbox_field, actions_field, select_field %}
+{% from message import alert_msg %}
+{% block content %}
+{{ alert_msg( reponse , alert ) }}
+{{ breadcrumb_field('ASSIGNING USERS DASHBORD COLORS' )}}
+    <div class="container">
+        <form method="POST" name="ifSendDatas">
+            <table id="TableFromDatas" class="table table-bordered nowrap displayTable">
+                {{ __csrf() }}
+                <thead scope="row">
+                    <tr>
+                        <th>{{ checkbox_field({ id : 'checkall' }) }}</th>
+                        <th class="head">Nº</th>
+                        <th class="head">USERS GROUP</th>
+                        <th class="head">USERS DASHBOARD COLORS</th>
+                    </tr>
+                </thead>
+                <tbody scope="row">
+                    {% for select in selectColors %} {% set counter = (counter | default (0))+1 %}
+                        <tr>
+                            <td class='tblcenter' style="width: 1%;">{{ checkbox_field( { name : 'group[]' , class : 'checkitem' , value : counter|e } ) }}</td>
+                            <td class='tblcenter' style="width: 3%">{{ counter|e }}</td>
+                            <td class="text-uppercase" style="width: 30%">{{ select.label|e }}</td>
+                            <td style="width: 50%" id="tdTableContent">
+                                {{ select_field({
+                                    init :"Dashboard colors list",
+                                    name : counter|e ~ "colors[]",
+                                    value : '_id',
+                                    selected : 'label',
+                                    datas : data.colorsList(),
+                                    position : select.color|e,
+                                    require : true })
+                                }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                {{ actions_field( 
+                    {
+                        datas : data.colorsActions() 
+                    }) 
+                }}     
+            </table>
+        </form>
+    </div> 
+{% endblock %}

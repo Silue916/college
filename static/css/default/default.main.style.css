@@ -1,0 +1,125 @@
+/*--------------------------------------------------------------
+# IMPORT CSS
+--------------------------------------------------------------*/
+@import url('default.epaphrodites.style.css');
+
+/*--------------------------------------------------------------
+  # MAIN
+--------------------------------------------------------------*/
+
+html,
+body {
+    background: #ddd;
+}
+
+.logo img {
+    margin-top: 80px;
+    width: 50%;
+}
+
+.titlesite {
+    background: #333333;
+    color: #ffffff;
+    padding: 5px 0px;
+    text-align: center;
+}
+
+.epaphrodite h1 {
+    font-size: 150px;
+    font-weight: 100px;
+    text-align: center;
+    width: 80%;
+}
+
+.epaphrodite {
+    margin-top: 5px;
+}
+
+.epaphrodite a {
+    text-decoration: none;
+    text-align: center;
+    padding: 10px 40px;
+    background: #ca0404;
+    border: 1px solid #fff;
+    border-radius: 40px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.epaphrodite a:hover {
+    background: #016D6D;
+    color: #ffffff;
+}
+
+.secure img{
+    width: 40%;
+    margin-top: -100px;
+}
+
+.texthead {
+    font-size: 20px;
+    text-align: center;
+}
+
+.informationtheme img{
+    margin-top: -170px;
+    width: 70%;
+}
+
+/*--------------------------------------------------------------
+  # LOGIN
+--------------------------------------------------------------*/
+
+.login {
+    margin: 170px auto 40px;
+    width: 30%;
+    box-shadow: var(--box-shadow-three);
+    padding: 17px;
+    background: #ffffff;
+}
+
+#authentification .form-control {
+    color: #646464;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: all 0.15s ease-out;
+    transition: all 0.15s ease-out;
+}
+
+#authentification .form-control:focus {
+    border-color: #ccc;
+    background-color: #fcfcfc;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#authentification .form-control {
+    padding-left: 0;
+    padding-right: 0;
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+    -webkit-box-shadow: 0 1px 0 #e6e6e6;
+    box-shadow: 0 1px 0 #e6e6e6;
+    margin-bottom: 14px;
+}
+
+#authentification .form-control:focus {
+    background-color: transparent;
+    -webkit-box-shadow: 0 2px 0 #646464;
+    box-shadow: 0 2px 0 #646464;
+}
+
+@media(max-width:767px) {
+    .login {
+        margin: 100px auto;
+        width: 90%;
+        box-shadow: var(--box-shadow-three);
+        padding: 17px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        background: #ffffff;
+    }
+}
