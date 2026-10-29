@@ -61,6 +61,15 @@ class databaseSeeding extends Builders{
                 ->IQuery();
         }
 
+        $roles = ['admin','scolarite','comptabilite','enseignant','eleve','parent'];
+        foreach ($roles as $r) {
+            $this->table('roles')
+                ->insert('code, libelle')
+                ->values('?, ?')
+                ->param([$r, ucfirst($r)])
+                ->sdb(1)
+                ->IQuery();
+        }
         $this->table('annees_scolaires')
             ->insert('libelle, date_debut, date_fin, type_periode, est_active')
             ->values('?, ?, ?, ?, ?')

@@ -4,6 +4,16 @@ namespace Epaphrodites\database\gearShift\schema;
 
 trait makeUpGearShift{
 
+    public function createRolesTable()
+    {
+        return $this->createTable('roles', function ($table) {
+            $table->addColumn('id', 'INTEGER', ['PRIMARY KEY', 'AUTO_INCREMENT']);
+            $table->addColumn('code', 'VARCHAR(30)', ['NOT NULL']);
+            $table->addColumn('libelle', 'VARCHAR(50)', ['NOT NULL']);
+            $table->db(1);
+        });
+    }
+
     public function createUsersAccountTable()
     {
         return $this->createTable('usersaccount', function ($table) {
@@ -104,3 +114,4 @@ trait makeUpGearShift{
         });
     }
 }
+

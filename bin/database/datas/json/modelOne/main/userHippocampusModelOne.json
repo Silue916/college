@@ -1,0 +1,58 @@
+{
+    "0": {
+        "date": "29-26-2026 12:40:45",
+        "login": "admin",
+        "question": "salut comment tu vas",
+        "answers": "Salut, je suis Épaphrodites, votre assistant personnel AI. Comment puis-je vous être utile ? ",
+        "language": "fr",
+        "previous": false
+    },
+    "1": {
+        "date": "29-26-2026 12:41:02",
+        "login": "admin",
+        "question": "peux-tu me donner tes fonctionnalites",
+        "answers": "Pour que je puisse répondre efficacement à votre préoccupation, pourriez-vous étoffer vos explications ?",
+        "language": "fr",
+        "previous": true
+    },
+    "2": {
+        "date": "29-26-2026 12:41:34",
+        "login": "admin",
+        "question": "je veux du comment tu fonctionnes",
+        "answers": "Je ne comprends pas votre préoccupation. Pourriez-vous être plus explicite, s'il vous plaît ?",
+        "language": "fr",
+        "previous": true
+    },
+    "3": {
+        "date": "29-26-2026 12:42:15",
+        "login": "admin",
+        "question": "comment pouvez-vous m'aider",
+        "answers": "Je suis un modèle de langage et je ne peux pas vous aider avec cette question.",
+        "language": "fr",
+        "previous": false
+    },
+    "4": {
+        "date": "29-26-2026 12:42:41",
+        "login": "admin",
+        "question": "qui est le president de la Cote d'Ivoire",
+        "answers": "Je suis une IA d'assistance. Je ne gère pas ce type d'informations.",
+        "language": "fr",
+        "previous": false
+    },
+    "5": {
+        "date": "29-26-2026 12:43:33",
+        "login": "admin",
+        "question": "qui est le president de la Cote d'Ivoire tu geres quel type de formation tu geres quel type d'information tu geres quel type d'information",
+        "answers": "Je suis un modèle de langage et je ne peux pas vous aider avec cette question.",
+        "language": "fr",
+        "previous": false
+    },
+    "6": {
+        "date": "29-26-2026 12:44:12",
+        "login": "admin",
+        "question": "tu geres quelle type d'information",
+        "answers": "Je suis là pour vous aider, mais j'ai besoin d'un peu plus de clarté. Pourriez-vous détailler votre préoccupation ?",
+        "language": "fr",
+        "previous": true
+    }
+}
