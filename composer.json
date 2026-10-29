@@ -25,12 +25,11 @@
     "psr-4": {
       "Epaphrodites\\": "bin/",
       "Database\\Epaphrodites\\": "bin/database/"
-
     }
   },
   "authors": [
     {
-      "name": "Y'srael Aimé N'DRI",
+      "name": "Y'srael Aim\u00e9 N'DRI",
       "email": "aimendrikonan@gmail.com",
       "role": "Lead Developer"
     }
@@ -54,5 +53,10 @@
     "phpoffice/phpspreadsheet": "^1.28",
     "mpdf/mpdf": "^8.2",
     "phpstan/phpstan": "^2.0"
+  },
+  "config": {
+    "platform": {
+      "php": "8.2.0"
+    }
   }
 }
