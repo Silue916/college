@@ -1,4 +1,13 @@
 {% extends layouts %}
+{% block title %}L’établissement - {{ site.name|e }}{% endblock %}
 {% block content %}
-<div class="container"><h1>etablissement</h1></div>
+<section class="page-banner"><div class="container"><p class="eyebrow">Qui sommes-nous ?</p><h1>Notre établissement</h1></div></section>
+<section class="container content-section">
+  <h2>Un parcours de la 6e à la Terminale</h2>
+  <p>{{ site.name|e }} accompagne les élèves du premier au second cycle de l’enseignement secondaire.</p>
+  <p>Notre équipe éducative veille à proposer un cadre propice aux apprentissages, au suivi des élèves et à la préparation de leur avenir.</p>
+  <h2>Une communauté éducative</h2>
+  <p>La réussite repose sur le dialogue entre les élèves, les familles et l’équipe de l’établissement.</p>
+  <a class="btn btn-primary" href="/contact/">Contacter l’établissement</a>
+</section>
 {% endblock %}

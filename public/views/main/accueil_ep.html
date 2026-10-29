@@ -1,8 +1,17 @@
 {% extends layouts %}
+{% block title %}Accueil - {{ site.name|e }}{% endblock %}
 {% block content %}
-<div class="container">
-  <h1>Bienvenue</h1>
-  <p>Établissement secondaire ivoirien</p>
-  <a href="{{ __path('login') }}">Préinscription en ligne</a>
-</div>
+<section class="hero">
+  <div class="container hero-content">
+    <p class="eyebrow">De la 6e à la Terminale</p>
+    <h1>Bienvenue à {{ site.name|e }}</h1>
+    <p>Un cadre d’apprentissage pour accompagner chaque élève dans sa réussite scolaire et son épanouissement.</p>
+    <a class="btn btn-primary btn-lg" href="/preinscription/">Préinscription en ligne</a>
+    <p class="mt-3"><a class="link-light" href="/suivi_preinscription/">Suivre mon dossier</a></p>
+  </div>
+</section>
+<section class="container section-space">
+  <div class="section-heading"><h2>Apprendre, progresser, réussir</h2></div>
+  <p>Retrouvez les informations utiles sur l’établissement, les admissions et la prochaine rentrée.</p>
+</section>
 {% endblock %}

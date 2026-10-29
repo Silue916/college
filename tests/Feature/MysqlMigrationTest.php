@@ -6,10 +6,12 @@ use Epaphrodites\database\gearShift\makeGearShift;
 use Epaphrodites\database\seeders\databaseSeeding;
 use Epaphrodites\services\AuthenticationService;
 use PDO;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 
 class MysqlMigrationTest extends TestCase
 {
+    #[Group('mysql-migration')]
     public function testMigrationsAndSeedersRunOnAnIsolatedMysqlTestDatabase(): void
     {
         $dsn = getenv('MYSQL_TEST_DSN');
@@ -60,6 +62,13 @@ class MysqlMigrationTest extends TestCase
             self::assertSame(
                 3,
                 (int) $connection->query('SELECT COUNT(*) FROM periodes')->fetchColumn()
+            );
+            self::assertSame(
+                1,
+                (int) $connection->query(
+                    "SELECT COUNT(*) FROM information_schema.tables
+                     WHERE table_schema = DATABASE() AND table_name = 'dossiers_preinscription'"
+                )->fetchColumn()
             );
             self::assertSame(
                 7,

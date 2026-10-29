@@ -1,0 +1,89 @@
+{% extends layouts %}
+{% block content %}
+<div class="container-fluid py-4">
+  <h1>Gestion des actualités</h1>
+  <p>Les actualités datées dans le futur restent invisibles sur le site public jusqu’à leur date de publication.</p>
+
+  {% if form_error %}
+    <div class="alert alert-danger" role="alert">{{ form_error|e }}</div>
+  {% endif %}
+
+  <section class="card mb-4">
+    <div class="card-header"><h2 class="h5 mb-0">Publier une actualité</h2></div>
+    <div class="card-body">
+      <form action="/news/manage_news/" method="post" enctype="multipart/form-data">
+        {{ __csrf() }}
+        <input type="hidden" name="action" value="create">
+        <div class="mb-3">
+          <label class="form-label" for="new-title">Titre</label>
+          <input class="form-control" id="new-title" name="title" maxlength="200" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="new-content">Contenu</label>
+          <textarea class="form-control" id="new-content" name="content" rows="6" maxlength="20000" required></textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="new-published-at">Date de publication</label>
+          <input class="form-control" id="new-published-at" name="published_at" type="datetime-local" value="{{ current_datetime|e }}" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="new-image">Image (JPG, PNG ou WebP, 2 Mo maximum)</label>
+          <input class="form-control" id="new-image" name="image" type="file" accept="image/jpeg,image/png,image/webp">
+        </div>
+        <button class="btn btn-primary" type="submit">Créer l’actualité</button>
+      </form>
+    </div>
+  </section>
+
+  <h2 class="h4">Actualités enregistrées</h2>
+  {% if news_items is empty %}
+    <p>Aucune actualité n’a encore été créée.</p>
+  {% else %}
+    {% for item in news_items %}
+      <section class="card mb-4">
+        <div class="card-header">
+          <h3 class="h5 mb-0">{{ item.title|e }}</h3>
+          <small>Publication prévue le {{ item.published_at|date('d/m/Y à H:i')|e }}</small>
+        </div>
+        <div class="card-body">
+          <form action="/news/manage_news/" method="post" enctype="multipart/form-data">
+            {{ __csrf() }}
+            <input type="hidden" name="action" value="update">
+            <input type="hidden" name="id" value="{{ item.id|e }}">
+            <div class="mb-3">
+              <label class="form-label" for="title-{{ item.id|e }}">Titre</label>
+              <input class="form-control" id="title-{{ item.id|e }}" name="title" maxlength="200" required value="{{ item.title|e }}">
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="content-{{ item.id|e }}">Contenu</label>
+              <textarea class="form-control" id="content-{{ item.id|e }}" name="content" rows="5" maxlength="20000" required>{{ item.content|e }}</textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="published-at-{{ item.id|e }}">Date de publication</label>
+              <input class="form-control" id="published-at-{{ item.id|e }}" name="published_at" type="datetime-local" value="{{ item.published_at|date('Y-m-d\\TH:i')|e }}" required>
+            </div>
+            {% if item.image_path %}
+              <p><img src="{{ item.image_path|e }}" alt="" style="max-width: 180px; height: auto;"></p>
+              <label class="form-check-label mb-3">
+                <input class="form-check-input" type="checkbox" name="remove_image" value="1">
+                Supprimer l’image actuelle
+              </label>
+            {% endif %}
+            <div class="mb-3">
+              <label class="form-label" for="image-{{ item.id|e }}">Remplacer l’image (JPG, PNG ou WebP, 2 Mo maximum)</label>
+              <input class="form-control" id="image-{{ item.id|e }}" name="image" type="file" accept="image/jpeg,image/png,image/webp">
+            </div>
+            <button class="btn btn-primary" type="submit">Enregistrer</button>
+          </form>
+          <form action="/news/manage_news/" method="post" class="mt-3">
+            {{ __csrf() }}
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="id" value="{{ item.id|e }}">
+            <button class="btn btn-outline-danger" type="submit">Supprimer</button>
+          </form>
+        </div>
+      </section>
+    {% endfor %}
+  {% endif %}
+</div>
+{% endblock %}

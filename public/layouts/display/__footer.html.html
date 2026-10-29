@@ -1,0 +1,28 @@
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h2>{{ site.name|default('Établissement scolaire')|e }}</h2>
+      <p>{{ site.address|default('Adresse à renseigner')|e }}</p>
+    </div>
+    <div>
+      <h2>Nous joindre</h2>
+      <p><a href="{{ site.phone_link|default('tel:+2250000000000')|e }}">{{ site.phone|default('+225 00 00 00 00 00')|e }}</a></p>
+      {% if site.contact_email|default('') %}
+        <p><a href="mailto:{{ site.contact_email|e }}">{{ site.contact_email|e }}</a></p>
+      {% endif %}
+    </div>
+    {% if site.social_links|default([]) %}
+      <div>
+        <h2>Réseaux sociaux</h2>
+        <ul class="social-links">
+          {% for link in site.social_links %}
+            <li><a href="{{ link.url|e }}" rel="noopener noreferrer">{{ link.label|e }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; {{ "now"|date("Y") }} {{ site.name|default('Établissement scolaire')|e }}</p>
+  </div>
+</footer>

@@ -2,46 +2,48 @@
 {% from forms import input_field, submit %}
 {% block content %}
 
-    <div class="login">
-        <div class="secure" align="center">
-            <img src="{{ __img('secure.svg') }}" alt="">
+    <section class="container login-page">
+        <div class="login-card">
+            <div class="secure" align="center">
+                <img src="{{ __img('secure.svg') }}" alt="">
+            </div>
+            <div class="texthead"><strong>CONNEXION</strong></div>
+            <div class="reponses {{ class }}">{{ reponse ? reponse : "" }}</div>
+            <form id="authentification" method="POST">
+
+                {{ __csrf() }}
+
+                {{ input_field(
+                    {
+                        type : 'text' ,
+                        require : true ,
+                        name : 'identifier' ,
+                        placeholder : 'Adresse e-mail ou matricule',
+                    }
+                )}}
+
+                {{ input_field(
+                    {
+                        require : true ,
+                        type : 'password' ,
+                        name : 'password',
+                        placeholder : 'Mot de passe',
+                    }
+                )}}
+
+                {{ submit(
+                    {
+                        label : 'Se connecter',
+                        icon : 'bi bi-lock'
+                    }
+                )}}
+
+            </form>
+            <a href="/forgot_password/">Mot de passe oublié ?</a>
         </div>
-        <div class="texthead"><strong>CONNEXION</strong></div>
-        <div class="reponses {{ class }}">{{ reponse ? reponse : "" }}</div>
-        <form id="authentification" method="POST">
+    </section>
 
-            {{ __csrf() }} 
-
-            {{ input_field(
-                { 
-                    type : 'text' ,
-                    require : true ,
-                    name : 'identifier' ,
-                    placeholder : 'Adresse e-mail ou matricule',
-                }
-            )}}
-                 
-            {{ input_field(
-                {
-                    require : true ,
-                    type : 'password' , 
-                    name : 'password',
-                    placeholder : 'Mot de passe',
-                }
-            )}} 
-            
-            {{ submit(
-                {
-                    label : 'Se connecter',
-                    icon : 'bi bi-lock'
-                }
-            )}}
-
-        </form>
-        <a href="/forgot_password/">Mot de passe oublié ?</a>
-    </div>
-
-    <div class="col-md-12 epaphrodite" align="center">
+    <div class="container py-3 text-center epaphrodite">
         <a href="{{ __host() }}"><i class="icofont-long-arrow-left"></i> ACCUEIL</a>
     </div>
 

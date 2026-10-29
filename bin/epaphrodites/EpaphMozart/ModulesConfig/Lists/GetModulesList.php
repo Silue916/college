@@ -27,6 +27,7 @@ class GetModulesList extends RighstList
             'chats' => 'CHAT MESSAGES',
             'users' => 'USERS MANAGEMENT',
             'students' => 'STUDENTS MANAGEMENT',
+            'actualites' => 'GESTION DES ACTUALITÉS',
             'actions' => 'ACTIONS MANAGEMENT',
             'setting' => 'SYSTEM SETTING',
         ];

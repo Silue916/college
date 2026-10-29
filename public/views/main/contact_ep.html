@@ -1,4 +1,49 @@
 {% extends layouts %}
+{% block title %}Contact - {{ site.name|e }}{% endblock %}
 {% block content %}
-<div class="container"><h1>contact</h1></div>
+<section class="page-banner"><div class="container"><p class="eyebrow">Nous sommes à votre écoute</p><h1>Contactez-nous</h1></div></section>
+<section class="container content-section contact-layout">
+  <div>
+    <h2>Coordonnées</h2>
+    <p>{{ site.address|e }}</p>
+    <p><a href="{{ site.phone_link|e }}">{{ site.phone|e }}</a></p>
+    {% if site.contact_email %}
+      <p><a href="mailto:{{ site.contact_email|e }}">{{ site.contact_email|e }}</a></p>
+    {% endif %}
+  </div>
+  <div>
+    <h2>Envoyer un message</h2>
+    {% if contact_message %}
+      <div class="alert alert-{{ contact_alert|e }}" role="status">{{ contact_message|e }}</div>
+    {% endif %}
+    <form action="/contact/" method="post" class="contact-form">
+      {{ __csrf() }}
+      <div class="honeypot" aria-hidden="true">
+        <label for="website">Ne pas remplir ce champ</label>
+        <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="name">Nom</label>
+        <input class="form-control" id="name" name="name" type="text" maxlength="100" required value="{{ contact_values.name|default('')|e }}">
+        {% if contact_errors.name is defined %}<div class="field-error">{{ contact_errors.name|e }}</div>{% endif %}
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="phone">Téléphone</label>
+        <input class="form-control" id="phone" name="phone" type="tel" maxlength="30" required value="{{ contact_values.phone|default('')|e }}">
+        {% if contact_errors.phone is defined %}<div class="field-error">{{ contact_errors.phone|e }}</div>{% endif %}
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="email">E-mail</label>
+        <input class="form-control" id="email" name="email" type="email" maxlength="254" required value="{{ contact_values.email|default('')|e }}">
+        {% if contact_errors.email is defined %}<div class="field-error">{{ contact_errors.email|e }}</div>{% endif %}
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="message">Message</label>
+        <textarea class="form-control" id="message" name="message" rows="6" maxlength="5000" required>{{ contact_values.message|default('')|e }}</textarea>
+        {% if contact_errors.message is defined %}<div class="field-error">{{ contact_errors.message|e }}</div>{% endif %}
+      </div>
+      <button class="btn btn-primary" type="submit">Envoyer le message</button>
+    </form>
+  </div>
+</section>
 {% endblock %}

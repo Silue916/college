@@ -34,6 +34,24 @@ jobs:
         run: |
           cp bin/config/Config.ini.example bin/config/Config.ini
           cp bin/config/email.ini.example bin/config/email.ini
+          python3 - <<'PY'
+          import configparser
+
+          path = "bin/config/Config.ini"
+          config = configparser.ConfigParser()
+          config.optionxform = str
+          config.read(path)
+          config["1_CONFIGURATION"].update({
+              "DRIVER": "mysql",
+              "DATABASE": "epaphrodites_test",
+              "HOST": "127.0.0.1",
+              "PORT": "3306",
+              "USER": "root",
+              "PASSWORD": "root",
+          })
+          with open(path, "w", encoding="utf-8") as settings:
+              config.write(settings)
+          PY
       - name: PHPStan
         run: vendor/bin/phpstan analyse --memory-limit=512M
       - name: MySQL migrations and seeding
@@ -43,6 +61,10 @@ jobs:
           MYSQL_TEST_PASSWORD: root
         run: vendor/bin/phpunit --filter MysqlMigrationTest
       - name: Start web server and run PHPUnit
+        env:
+          PUBLIC_SITE_MYSQL_DSN: mysql:host=127.0.0.1;port=3306;dbname=epaphrodites_test;charset=utf8mb4
+          PUBLIC_SITE_MYSQL_USER: root
+          PUBLIC_SITE_MYSQL_PASSWORD: root
         run: |
           php -S 127.0.0.1:8000 > /tmp/epaphrodites-server.log 2>&1 &
 
@@ -57,4 +79,4 @@ jobs:
             cat /tmp/epaphrodites-server.log
             exit 1
           }
-          vendor/bin/phpunit
+          vendor/bin/phpunit --exclude-group mysql-migration

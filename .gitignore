@@ -4,6 +4,7 @@ vendor/
 bin/config/Config.ini
 bin/config/email.ini
 uploads/
+epaphrodites-private/
 static/docs/
 cache/
 *.sqlite

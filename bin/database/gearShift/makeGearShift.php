@@ -28,7 +28,11 @@ final class makeGearShift extends Build{
             $this->createElevesTable(),
             $this->createMatieresTable(),
             $this->createCoefficientsTable(),
-            $this->createRolesTable()
+            $this->createRolesTable(),
+            $this->createActualitesTable(),
+            $this->createContactRateLimitLocksTable(),
+            $this->createContactRateLimitsTable(),
+            $this->createDossiersPreinscriptionTable()
         ];
     }
 

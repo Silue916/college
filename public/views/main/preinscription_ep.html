@@ -1,0 +1,173 @@
+{% extends layouts %}
+{% block title %}Préinscription - {{ site.name|e }}{% endblock %}
+{% block content %}
+<section class="page-banner"><div class="container"><p class="eyebrow">Rentrée scolaire</p><h1>Préinscription en ligne</h1></div></section>
+{% if confirmation %}
+  <section class="container content-section">
+    <div class="confirmation-card">
+      <h2>Votre demande a bien été enregistrée</h2>
+      <p>Conservez votre numéro de dossier pour suivre son traitement :</p>
+      <p class="application-number">{{ confirmation.numero_dossier|e }}</p>
+      {% if email_notice %}<p role="status">{{ email_notice|e }}</p>{% endif %}
+      <a class="btn btn-primary" href="/suivi_preinscription/">Suivre mon dossier</a>
+    </div>
+  </section>
+{% else %}
+  <section class="container content-section preinscription-content">
+    <p>Les champs marqués d’un astérisque sont obligatoires. Les pièces jointes doivent être au format PDF, JPG ou PNG et peser au maximum 2 Mo chacune.</p>
+    <p>Les informations et documents transmis servent au traitement de cette demande d’admission et ne sont pas publiés sur le site.</p>
+    <form class="preinscription-form" method="POST" enctype="multipart/form-data" data-preinscription-form data-current-step="{{ first_error_step|default(1) }}">
+      {{ __csrf() }}
+      <p class="required-note">Les trois étapes peuvent être parcourues avant l’envoi définitif du dossier.</p>
+      <div class="step-progress" aria-live="polite">
+        <span data-step-indicator>Étape 1 sur 3 — Élève</span>
+      </div>
+
+      <fieldset data-step="1">
+        <legend>1. Informations sur l’élève</legend>
+        <div class="preinscription-fields">
+          <div class="form-field">
+            <label for="nom">Nom *</label>
+            <input id="nom" name="nom" maxlength="100" required value="{{ form_values.nom|default('')|e }}">
+            {% if form_errors.nom|default('') %}<p class="field-error">{{ form_errors.nom|e }}</p>{% endif %}
+          </div>
+          <div class="form-field">
+            <label for="prenoms">Prénoms *</label>
+            <input id="prenoms" name="prenoms" maxlength="150" required value="{{ form_values.prenoms|default('')|e }}">
+            {% if form_errors.prenoms|default('') %}<p class="field-error">{{ form_errors.prenoms|e }}</p>{% endif %}
+          </div>
+          <div class="form-field">
+            <label for="date_naissance">Date de naissance *</label>
+            <input id="date_naissance" name="date_naissance" type="date" required value="{{ form_values.date_naissance|default('')|e }}">
+            {% if form_errors.date_naissance|default('') %}<p class="field-error">{{ form_errors.date_naissance|e }}</p>{% endif %}
+          </div>
+          <div class="form-field">
+            <label for="lieu_naissance">Lieu de naissance *</label>
+            <input id="lieu_naissance" name="lieu_naissance" maxlength="120" required value="{{ form_values.lieu_naissance|default('')|e }}">
+            {% if form_errors.lieu_naissance|default('') %}<p class="field-error">{{ form_errors.lieu_naissance|e }}</p>{% endif %}
+          </div>
+          <div class="form-field">
+            <label for="sexe">Sexe *</label>
+            <select id="sexe" name="sexe" required>
+              <option value="">Choisir</option>
+              <option value="F" {% if form_values.sexe|default('') == 'F' %}selected{% endif %}>Féminin</option>
+              <option value="M" {% if form_values.sexe|default('') == 'M' %}selected{% endif %}>Masculin</option>
+            </select>
+            {% if form_errors.sexe|default('') %}<p class="field-error">{{ form_errors.sexe|e }}</p>{% endif %}
+          </div>
+          <div class="form-field">
+            <label for="nationalite">Nationalité *</label>
+            <input id="nationalite" name="nationalite" maxlength="80" required value="{{ form_values.nationalite|default('Ivoirienne')|e }}">
+            {% if form_errors.nationalite|default('') %}<p class="field-error">{{ form_errors.nationalite|e }}</p>{% endif %}
+          </div>
+          <div class="form-field">
+            <label for="matricule_mena">Matricule MENA (facultatif)</label>
+            <input id="matricule_mena" name="matricule_mena" maxlength="50" value="{{ form_values.matricule_mena|default('')|e }}">
+            {% if form_errors.matricule_mena|default('') %}<p class="field-error">{{ form_errors.matricule_mena|e }}</p>{% endif %}
+          </div>
+          <div class="form-field">
+            <label for="statut_affectation">Statut d’affectation *</label>
+            <select id="statut_affectation" name="statut_affectation" required>
+              <option value="">Choisir</option>
+              <option value="affecte" {% if form_values.statut_affectation|default('') == 'affecte' %}selected{% endif %}>Affecté de l’État</option>
+              <option value="non_affecte" {% if form_values.statut_affectation|default('') == 'non_affecte' %}selected{% endif %}>Non affecté</option>
+            </select>
+            {% if form_errors.statut_affectation|default('') %}<p class="field-error">{{ form_errors.statut_affectation|e }}</p>{% endif %}
+          </div>
+          <div class="form-field">
+            <label for="etablissement_origine">Établissement d’origine *</label>
+            <input id="etablissement_origine" name="etablissement_origine" maxlength="150" required value="{{ form_values.etablissement_origine|default('')|e }}">
+            {% if form_errors.etablissement_origine|default('') %}<p class="field-error">{{ form_errors.etablissement_origine|e }}</p>{% endif %}
+          </div>
+          <div class="form-field">
+            <label for="niveau_id">Niveau demandé *</label>
+            <select id="niveau_id" name="niveau_id" required data-niveau-select>
+              <option value="">Choisir</option>
+              {% for niveau in niveaux %}
+                <option value="{{ niveau.id }}" data-cycle="{{ niveau.cycle }}" data-code="{{ niveau.code|e }}" {% if form_values.niveau_id|default('') == niveau.id ~ '' %}selected{% endif %}>{{ niveau.code|e }}</option>
+              {% endfor %}
+            </select>
+            {% if form_errors.niveau_id|default('') %}<p class="field-error">{{ form_errors.niveau_id|e }}</p>{% endif %}
+          </div>
+          <div class="form-field">
+            <label for="serie_id">Série demandée <span data-serie-required>(obligatoire en 2nde, 1re et Tle)</span></label>
+            <select id="serie_id" name="serie_id" data-serie-select>
+              <option value="">Choisir</option>
+              {% for serie in series %}
+                <option value="{{ serie.id }}" data-code="{{ serie.code|e }}" {% if form_values.serie_id|default('') == serie.id ~ '' %}selected{% endif %}>{{ serie.libelle|e }}</option>
+              {% endfor %}
+            </select>
+            {% if form_errors.serie_id|default('') %}<p class="field-error">{{ form_errors.serie_id|e }}</p>{% endif %}
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset data-step="2">
+        <legend>2. Responsable légal</legend>
+        <div class="preinscription-fields">
+          <div class="form-field">
+            <label for="responsable_nom">Nom complet *</label>
+            <input id="responsable_nom" name="responsable_nom" maxlength="150" required value="{{ form_values.responsable_nom|default('')|e }}">
+            {% if form_errors.responsable_nom|default('') %}<p class="field-error">{{ form_errors.responsable_nom|e }}</p>{% endif %}
+          </div>
+          <div class="form-field">
+            <label for="lien_parente">Lien de parenté *</label>
+            <input id="lien_parente" name="lien_parente" maxlength="80" required value="{{ form_values.lien_parente|default('')|e }}">
+            {% if form_errors.lien_parente|default('') %}<p class="field-error">{{ form_errors.lien_parente|e }}</p>{% endif %}
+          </div>
+          <div class="form-field">
+            <label for="telephone">Téléphone ivoirien *</label>
+            <input id="telephone" name="telephone" type="tel" autocomplete="tel" required value="{{ form_values.telephone|default('')|e }}" aria-describedby="telephone-help">
+            <small id="telephone-help">10 chiffres, avec ou sans l’indicatif +225.</small>
+            {% if form_errors.telephone|default('') %}<p class="field-error">{{ form_errors.telephone|e }}</p>{% endif %}
+          </div>
+          <div class="form-field">
+            <label for="email">E-mail (facultatif)</label>
+            <input id="email" name="email" type="email" maxlength="254" autocomplete="email" value="{{ form_values.email|default('')|e }}">
+            {% if form_errors.email|default('') %}<p class="field-error">{{ form_errors.email|e }}</p>{% endif %}
+          </div>
+          <div class="form-field">
+            <label for="profession">Profession *</label>
+            <input id="profession" name="profession" maxlength="120" required value="{{ form_values.profession|default('')|e }}">
+            {% if form_errors.profession|default('') %}<p class="field-error">{{ form_errors.profession|e }}</p>{% endif %}
+          </div>
+          <div class="form-field">
+            <label for="commune">Commune de résidence *</label>
+            <input id="commune" name="commune" maxlength="100" required value="{{ form_values.commune|default('')|e }}">
+            {% if form_errors.commune|default('') %}<p class="field-error">{{ form_errors.commune|e }}</p>{% endif %}
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset data-step="3">
+        <legend>3. Pièces à joindre</legend>
+        <div class="preinscription-fields">
+          <div class="form-field">
+            <label for="extrait_acte">Extrait d’acte de naissance *</label>
+            <input id="extrait_acte" name="extrait_acte" type="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" required>
+            {% if form_errors.extrait_acte|default('') %}<p class="field-error">{{ form_errors.extrait_acte|e }}</p>{% endif %}
+          </div>
+          <div class="form-field">
+            <label for="bulletin">Dernier bulletin scolaire *</label>
+            <input id="bulletin" name="bulletin" type="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" required>
+            {% if form_errors.bulletin|default('') %}<p class="field-error">{{ form_errors.bulletin|e }}</p>{% endif %}
+          </div>
+          <div class="form-field">
+            <label for="photo_identite">Photo d’identité *</label>
+            <input id="photo_identite" name="photo_identite" type="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" required>
+            {% if form_errors.photo_identite|default('') %}<p class="field-error">{{ form_errors.photo_identite|e }}</p>{% endif %}
+          </div>
+        </div>
+        <p>Chaque fichier est limité à 2 Mo. Les documents sont conservés dans un espace privé et ne sont pas accessibles par URL publique.</p>
+      </fieldset>
+
+      <div class="step-actions">
+        <button class="btn btn-outline-primary" type="button" data-step-previous>Précédent</button>
+        <button class="btn btn-primary" type="button" data-step-next>Suivant</button>
+        <button class="btn btn-primary" type="submit" data-step-submit>Envoyer le dossier</button>
+      </div>
+    </form>
+  </section>
+  <script src="{{ __js('site/preinscription') }}"></script>
+{% endif %}
+{% endblock %}

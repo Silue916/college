@@ -41,6 +41,11 @@ class GetRightList extends epaphroditeClass
             'path' => 'studentsFolder/manage_students',
          ],
          [
+            'apps' => 'actualites',
+            'libelle' => 'Gérer les actualités',
+            'path' => 'newsFolder/manage_news',
+         ],
+         [
             'apps' => 'actions',
             'libelle' => 'List of recent actions',
             'path' => 'settingFolder/list_of_recent_actions',

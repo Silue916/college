@@ -1,4 +1,11 @@
 {% extends layouts %}
+{% block title %}Frais de scolarité - {{ site.name|e }}{% endblock %}
 {% block content %}
-<div class="container"><h1>frais</h1></div>
+<section class="page-banner"><div class="container"><p class="eyebrow">Informations pratiques</p><h1>Frais de scolarité indicatifs</h1></div></section>
+<section class="container content-section">
+  <h2>Tarifs de l’année scolaire</h2>
+  <p>Les frais varient selon le niveau et les modalités d’inscription. Le montant applicable, les échéances et les éventuels frais annexes sont confirmés par l’administration au moment de l’inscription.</p>
+  <p>Pour obtenir un état indicatif adapté au niveau demandé, contactez le service de scolarité.</p>
+  <a class="btn btn-primary" href="/contact/">Demander les informations tarifaires</a>
+</section>
 {% endblock %}

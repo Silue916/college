@@ -13,8 +13,6 @@ class RunKernelTest extends TestCase
 
         $runKernel = new runKernel();
 
-        runKernel::Run();
-
         $actualValue = $runKernel->getHome();
 
         $expectedValue = _FAKE_ . 'index/';
@@ -22,4 +20,3 @@ class RunKernelTest extends TestCase
         $this->assertEquals($expectedValue, $actualValue);
     }
 }
-

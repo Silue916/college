@@ -1,0 +1,28 @@
+<header class="site-header">
+  <div class="container site-header-inner">
+    <a class="site-brand" href="/" aria-label="Accueil - {{ site.name|default('Établissement scolaire')|e }}">
+      <img src="{{ site.logo|default('/static/img/logo.png')|e }}"
+           alt=""
+           width="52"
+           height="52">
+      <span>{{ site.name|default('Établissement scolaire')|e }}</span>
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <input class="menu-toggle-input" type="checkbox" id="site-menu-toggle">
+      <label class="menu-toggle" for="site-menu-toggle">
+        <span aria-hidden="true">☰</span>
+        <span>Menu</span>
+      </label>
+      <ul class="site-nav-links">
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/etablissement/">L’établissement</a></li>
+        <li><a href="/admission/">Admissions</a></li>
+        <li><a href="/frais/">Frais</a></li>
+        <li><a href="/actualites/">Actualités</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/preinscription/">Préinscription</a></li>
+        <li><a class="nav-cta" href="/view/login/">Mon espace</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -1,17 +1,24 @@
-{% extends layouts %} 
+{% extends layouts %}
+{% block title %}Accueil - {{ site.name|e }}{% endblock %}
 {% block content %}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="logo" align="center"><img src="{{ __img('logo.png') }}" class="img-fluid"></div>
-            <div class="col-md-12 titlesite">{{ __msg('site-title') }}</div>
-            <div class="col-md-12 epaphrodite" align="center">
-                <h1>Welcome</h1>
-                <a href="{{ __path('login') }}"> AUTHENTIFICATION <i class="icofont-long-arrow-right"></i></a>
-            </div>
-            <div class="container pt-20" align="center">
-                {{ __QRCodes('https://epaphrodite.org') }}
-                <p>Authentic</p>
-            </div>
-        </div>
-    </div>
+<section class="hero">
+  <div class="container hero-content">
+    <p class="eyebrow">De la 6e à la Terminale</p>
+    <h1>Bienvenue à {{ site.name|e }}</h1>
+    <p>Un cadre d’apprentissage pour accompagner chaque élève dans sa réussite scolaire et son épanouissement.</p>
+    <a class="btn btn-primary btn-lg" href="/preinscription/">Préinscription en ligne</a>
+  </div>
+</section>
+<section class="container section-space">
+  <div class="section-heading">
+    <p class="eyebrow">Notre établissement</p>
+    <h2>Apprendre, progresser, réussir</h2>
+  </div>
+  <p>Découvrez notre établissement, les conditions d’admission et les informations pratiques pour préparer la rentrée.</p>
+  <div class="quick-links">
+    <a class="info-card" href="/etablissement/"><h3>L’établissement</h3><span>Découvrir notre cadre scolaire</span></a>
+    <a class="info-card" href="/admission/"><h3>Admissions</h3><span>Consulter les conditions et pièces à fournir</span></a>
+    <a class="info-card" href="/frais/"><h3>Frais de scolarité</h3><span>Obtenir les informations tarifaires</span></a>
+  </div>
+</section>
 {% endblock %}

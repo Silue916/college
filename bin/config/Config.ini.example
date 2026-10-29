@@ -13,6 +13,17 @@ ADMIN_EMAIL = admin@example.invalid
 ADMIN_PASSWORD =
 APP_URL = https://example.invalid
 
+[SITE]
+NAME = Établissement scolaire
+LOGO = /static/img/logo.png
+ADDRESS = Adresse à renseigner, Côte d’Ivoire
+PHONE = +225 00 00 00 00 00
+CONTACT_EMAIL = contact@example.invalid
+FACEBOOK =
+INSTAGRAM =
+LINKEDIN =
+YOUTUBE =
+
 [2_CONFIGURATION]
 DRIVER = sqlite
 DATABASE = tests.sqlite

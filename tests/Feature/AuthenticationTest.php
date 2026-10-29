@@ -252,6 +252,15 @@ class AuthenticationTest extends TestCase
             self::assertSame(403, curl_getinfo($curl, CURLINFO_HTTP_CODE));
             curl_close($curl);
 
+            $curl = curl_init($baseUrl . '/news/manage_news/');
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_TIMEOUT, 5);
+            curl_setopt($curl, CURLOPT_HTTPHEADER, ['Cookie: session=' . $sessionId]);
+            curl_exec($curl);
+
+            self::assertSame(403, curl_getinfo($curl, CURLINFO_HTTP_CODE));
+            curl_close($curl);
+
             $curl = curl_init($baseUrl . '/dashboard/super_admin/');
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($curl, CURLOPT_TIMEOUT, 5);
@@ -259,6 +268,53 @@ class AuthenticationTest extends TestCase
             curl_exec($curl);
 
             self::assertSame(403, curl_getinfo($curl, CURLINFO_HTTP_CODE));
+            curl_close($curl);
+        } finally {
+            if (session_status() === PHP_SESSION_ACTIVE) {
+                session_write_close();
+            }
+            session_name($sessionName);
+            if (is_file($sessionFile)) {
+                unlink($sessionFile);
+            }
+        }
+    }
+
+    public function testAdministratorCanOpenTheNewsManagementPage(): void
+    {
+        $sessionId = session_create_id();
+        $sessionName = session_name();
+        $sessionFile = rtrim(session_save_path() ?: sys_get_temp_dir(), DIRECTORY_SEPARATOR)
+            . DIRECTORY_SEPARATOR
+            . 'sess_' . $sessionId;
+
+        try {
+            session_name('session');
+            session_id($sessionId);
+            session_start();
+            $_SESSION = [
+                _AUTH_ID_ => '1',
+                _AUTH_LOGIN_ => 'admin@example.test',
+                _AUTH_NAME_ => 'Administrateur Test',
+                _AUTH_EMAIL_ => 'admin@example.test',
+                _AUTH_CONTACT_ => '+2250102030405',
+                _AUTH_TYPE_ => '1',
+                AuthGuard::ROLE_SESSION_KEY => 'admin',
+                AuthGuard::LAST_ACTIVITY_SESSION_KEY => time(),
+            ];
+            session_write_close();
+            session_name($sessionName);
+
+            $baseUrl = rtrim(getenv('HOMEPAGE_URL') ?: 'http://127.0.0.1:8000', '/');
+            $curl = curl_init($baseUrl . '/news/manage_news/');
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_TIMEOUT, 5);
+            curl_setopt($curl, CURLOPT_HTTPHEADER, ['Cookie: session=' . $sessionId]);
+            $response = curl_exec($curl);
+
+            self::assertSame(200, curl_getinfo($curl, CURLINFO_HTTP_CODE));
+            self::assertIsString($response);
+            self::assertStringContainsString('Gestion des actualités', $response);
             curl_close($curl);
         } finally {
             if (session_status() === PHP_SESSION_ACTIVE) {

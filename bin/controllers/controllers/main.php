@@ -6,6 +6,11 @@ use Epaphrodites\controllers\switchers\MainSwitchers;
 use Epaphrodites\services\AuthenticationConfig;
 use Epaphrodites\services\AuthenticationService;
 use Epaphrodites\services\AuthGuard;
+use Epaphrodites\services\ContactFormService;
+use Epaphrodites\services\NewsService;
+use Epaphrodites\services\PreinscriptionService;
+use Epaphrodites\services\PreinscriptionValidationException;
+use Epaphrodites\services\PublicSiteConfig;
 use RuntimeException;
 
 final class main extends MainSwitchers
@@ -39,8 +44,7 @@ final class main extends MainSwitchers
         string $html
     ):void
     {
-
-        $this->views($html, []);
+        $this->renderPublic($html);
     }
     
     /**
@@ -96,11 +100,6 @@ final class main extends MainSwitchers
                 'reponse' => $this->ans
             ]
         );
-    }
-
-    public final function connexion(string $html): void
-    {
-        $this->login($html);
     }
 
     public final function forgotPassword(string $html): void
@@ -240,8 +239,7 @@ final class main extends MainSwitchers
     * @return void
     */
      public final function accueil(string $html): void{
-    
-        $this->views( $html, [], false );
+        $this->renderPublic($html);
     }
 
     /**
@@ -251,8 +249,7 @@ final class main extends MainSwitchers
     * @return void
     */
      public final function etablissement(string $html): void{
-    
-        $this->views( $html, [], false );
+        $this->renderPublic($html);
     }
 
     /**
@@ -262,8 +259,7 @@ final class main extends MainSwitchers
     * @return void
     */
      public final function admission(string $html): void{
-    
-        $this->views( $html, [], false );
+        $this->renderPublic($html);
     }
 
     /**
@@ -273,8 +269,7 @@ final class main extends MainSwitchers
     * @return void
     */
      public final function frais(string $html): void{
-    
-        $this->views( $html, [], false );
+        $this->renderPublic($html);
     }
 
     /**
@@ -284,8 +279,82 @@ final class main extends MainSwitchers
     * @return void
     */
      public final function contact(string $html): void{
-    
-        $this->views( $html, [], false );
+        $values = [
+            'name' => $_POST['name'] ?? '',
+            'phone' => $_POST['phone'] ?? '',
+            'email' => $_POST['email'] ?? '',
+            'message' => $_POST['message'] ?? '',
+            'website' => $_POST['website'] ?? '',
+        ];
+        foreach ($values as $key => $value) {
+            $values[$key] = is_string($value) ? $value : '';
+        }
+
+        $errors = [];
+        $message = '';
+        $alert = '';
+        if (strtoupper($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
+            $service = new ContactFormService();
+            if (trim($values['website']) !== '') {
+                $service->submit(
+                    $values,
+                    (string) ($_SERVER['REMOTE_ADDR'] ?? ''),
+                    static fn (array $contact): bool => false
+                );
+                $message = 'Votre message a bien été pris en compte.';
+                $alert = 'success';
+            } else {
+                $errors = ContactFormService::validate($values);
+                if ($errors === []) {
+                    $site = PublicSiteConfig::local();
+                    if (filter_var($site['contact_email'], FILTER_VALIDATE_EMAIL) === false) {
+                        throw new RuntimeException(
+                            'Configurez SITE.CONTACT_EMAIL dans bin/config/Config.ini pour recevoir les messages.'
+                        );
+                    }
+
+                    $result = $service->submit(
+                        $values,
+                        (string) ($_SERVER['REMOTE_ADDR'] ?? ''),
+                        static function (array $contact) use ($site): bool {
+                            $body = '<h2>Message du formulaire de contact</h2>'
+                                . '<p><strong>Nom :</strong> '
+                                . htmlspecialchars($contact['name'], ENT_QUOTES, 'UTF-8')
+                                . '</p><p><strong>Téléphone :</strong> '
+                                . htmlspecialchars($contact['phone'], ENT_QUOTES, 'UTF-8')
+                                . '</p><p><strong>E-mail :</strong> '
+                                . htmlspecialchars($contact['email'], ENT_QUOTES, 'UTF-8')
+                                . '</p><p><strong>Message :</strong><br>'
+                                . nl2br(htmlspecialchars($contact['message'], ENT_QUOTES, 'UTF-8'))
+                                . '</p>';
+
+                            return static::initNamespace()['mail']->sendEmail(
+                                [$site['contact_email']],
+                                'Nouveau message depuis le site',
+                                $body
+                            ) === true;
+                        }
+                    );
+
+                    if ($result === 'rate_limited') {
+                        http_response_code(429);
+                        $message = 'La limite de trois messages par heure est atteinte. Réessayez plus tard.';
+                        $alert = 'danger';
+                    } else {
+                        $message = 'Votre message a bien été envoyé.';
+                        $alert = 'success';
+                        $values = ['name' => '', 'phone' => '', 'email' => '', 'message' => '', 'website' => ''];
+                    }
+                }
+            }
+        }
+
+        $this->renderPublic($html, [
+            'contact_values' => $values,
+            'contact_errors' => $errors,
+            'contact_message' => $message,
+            'contact_alert' => $alert,
+        ]);
     }
 
     /**
@@ -295,7 +364,191 @@ final class main extends MainSwitchers
     * @return void
     */
      public final function actualites(string $html): void{
-    
-        $this->views( $html, [], false );
+        $this->renderPublic($html, [
+            'news' => (new NewsService())->listPublished(),
+        ]);
+    }
+
+    public final function actualite(string $html): void
+    {
+        $id = $_GET['id'] ?? null;
+        $article = is_string($id) && ctype_digit($id)
+            ? (new NewsService())->findPublished((int) $id)
+            : null;
+
+        if ($article === null) {
+            http_response_code(404);
+            $this->views('errors/404.html', PublicSiteConfig::viewData(), false);
+            return;
+        }
+
+        $this->renderPublic($html, ['article' => $article]);
+    }
+
+    public final function preinscription(string $html): void
+    {
+        $service = new PreinscriptionService();
+        $number = $_GET['numero'] ?? null;
+        if (is_string($number) && $number !== '') {
+            $confirmation = preg_match('/^PRE-[0-9]{4}-[0-9]{5,}$/', $number) === 1
+                ? $service->findForConfirmation($number)
+                : null;
+            if ($confirmation === null) {
+                http_response_code(404);
+                $this->views('errors/404.html', PublicSiteConfig::viewData(), false);
+                return;
+            }
+
+            $emailNotice = $_SESSION['preinscription_email_notice'] ?? '';
+            unset($_SESSION['preinscription_email_notice']);
+            $this->renderPublic($html, [
+                'confirmation' => $confirmation,
+                'email_notice' => is_string($emailNotice) ? $emailNotice : '',
+            ]);
+            return;
+        }
+
+        $formValues = $this->preinscriptionValues();
+        $errors = [];
+        if (strtoupper($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
+            $formValues = $this->preinscriptionValues($_POST);
+            try {
+                $confirmation = $service->submit($formValues, $_FILES);
+                $email = trim($formValues['email']);
+                if ($email !== '') {
+                    $body = '<p>Votre demande de préinscription a bien été reçue.</p>'
+                        . '<p>Numéro de dossier : <strong>'
+                        . htmlspecialchars($confirmation['numero_dossier'], ENT_QUOTES, 'UTF-8')
+                        . '</strong></p><p>Conservez ce numéro pour suivre votre dossier.</p>';
+                    $sent = static::initNamespace()['mail']->sendEmail(
+                        [$email],
+                        'Confirmation de votre préinscription',
+                        $body
+                    );
+                    $_SESSION['preinscription_email_notice'] = $sent === true
+                        ? 'Un e-mail de confirmation vous a été envoyé.'
+                        : 'Votre dossier est enregistré, mais l’e-mail de confirmation n’a pas pu être envoyé.';
+                } else {
+                    $_SESSION['preinscription_email_notice'] = '';
+                }
+
+                header(
+                    'Location: /preinscription/?numero=' . rawurlencode($confirmation['numero_dossier']),
+                    true,
+                    303
+                );
+                return;
+            } catch (PreinscriptionValidationException $exception) {
+                $errors = $exception->errors();
+            }
+        }
+
+        $this->renderPublic($html, [
+            'form_values' => $formValues,
+            'form_errors' => $errors,
+            'niveaux' => $service->getNiveaux(),
+            'series' => $service->getSeries(),
+            'first_error_step' => self::firstPreinscriptionErrorStep($errors),
+        ]);
+    }
+
+    public final function suiviPreinscription(string $html): void
+    {
+        $number = '';
+        $birthDate = '';
+        $status = null;
+        $message = '';
+
+        if (strtoupper($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
+            $number = isset($_POST['numero_dossier']) && is_string($_POST['numero_dossier'])
+                ? trim($_POST['numero_dossier'])
+                : '';
+            $birthDate = isset($_POST['date_naissance']) && is_string($_POST['date_naissance'])
+                ? trim($_POST['date_naissance'])
+                : '';
+            if ($number === '' || $birthDate === '') {
+                $message = 'Saisissez le numéro de dossier et la date de naissance de l’élève.';
+            } else {
+                $status = (new PreinscriptionService())->findStatusForTracking($number, $birthDate);
+                if ($status === null) {
+                    $message = 'Aucun dossier ne correspond aux informations saisies.';
+                }
+            }
+        }
+
+        $this->renderPublic($html, [
+            'numero_dossier' => $number,
+            'date_naissance' => $birthDate,
+            'dossier_statut' => $status,
+            'suivi_message' => $message,
+        ]);
+    }
+
+    /**
+     * @param array<string, mixed> $source
+     * @return array<string, string>
+     */
+    private function preinscriptionValues(array $source = []): array
+    {
+        $fields = [
+            'nom',
+            'prenoms',
+            'date_naissance',
+            'lieu_naissance',
+            'sexe',
+            'nationalite',
+            'matricule_mena',
+            'statut_affectation',
+            'etablissement_origine',
+            'niveau_id',
+            'serie_id',
+            'responsable_nom',
+            'lien_parente',
+            'telephone',
+            'email',
+            'profession',
+            'commune',
+        ];
+        $values = [];
+        foreach ($fields as $field) {
+            $value = $source[$field] ?? '';
+            $values[$field] = is_string($value) ? trim($value) : '';
+        }
+
+        return $values;
+    }
+
+    /**
+     * @param array<string, string> $errors
+     */
+    private static function firstPreinscriptionErrorStep(array $errors): int
+    {
+        $responsibleFields = [
+            'responsable_nom',
+            'lien_parente',
+            'telephone',
+            'email',
+            'profession',
+            'commune',
+        ];
+        $documentFields = ['extrait_acte', 'bulletin', 'photo_identite'];
+        foreach ($errors as $field => $_message) {
+            if (in_array($field, $responsibleFields, true)) {
+                return 2;
+            }
+            if (in_array($field, $documentFields, true)) {
+                return 3;
+            }
+        }
+
+        return 1;
+    }
+
+    /**
+     * @param array<string, mixed> $content
+     */
+    private function renderPublic(string $html, array $content = []): void
+    {
+        $this->views($html, array_merge(PublicSiteConfig::viewData(), $content), false);
     }
 }

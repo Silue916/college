@@ -1,0 +1,13 @@
+{% extends layouts %}
+{% block title %}{{ article.title|e }} - {{ site.name|e }}{% endblock %}
+{% block content %}
+<section class="page-banner"><div class="container"><p class="eyebrow">Actualité</p><h1>{{ article.title|e }}</h1></div></section>
+<article class="container content-section news-detail">
+  <p class="news-date">{{ article.published_at|date('d/m/Y')|e }}</p>
+  {% if article.image_path %}
+    <img class="news-detail-image" src="{{ article.image_path|e }}" alt="">
+  {% endif %}
+  <div class="news-body">{{ article.content|e }}</div>
+  <p><a href="/actualites/">Retour aux actualités</a></p>
+</article>
+{% endblock %}

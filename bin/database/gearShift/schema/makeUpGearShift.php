@@ -22,6 +22,74 @@ trait makeUpGearShift{
         });
     }
 
+    public function createActualitesTable()
+    {
+        return $this->createTable('actualites', function ($table) {
+            $table->addColumn('id', 'INTEGER', $this->primaryKeyOptions());
+            $table->addColumn('title', 'VARCHAR(200)', ['NOT NULL']);
+            $table->addColumn('content', 'TEXT', ['NOT NULL']);
+            $table->addColumn('image_path', 'VARCHAR(255)', ['DEFAULT NULL']);
+            $table->addColumn('published_at', 'DATETIME', ['NOT NULL']);
+            $table->addColumn('created_at', 'DATETIME', ['NOT NULL']);
+            $table->addColumn('updated_at', 'DATETIME', ['NOT NULL']);
+            $table->addIndex('published_at');
+            $table->db(1);
+        });
+    }
+
+    public function createContactRateLimitLocksTable()
+    {
+        return $this->createTable('contact_rate_limit_locks', function ($table) {
+            $table->addColumn('ip_address', 'VARCHAR(45)', ['PRIMARY KEY']);
+            $table->addColumn('locked_at', 'DATETIME', ['NOT NULL']);
+            $table->db(1);
+        });
+    }
+
+    public function createContactRateLimitsTable()
+    {
+        return $this->createTable('contact_rate_limits', function ($table) {
+            $table->addColumn('id', 'INTEGER', $this->primaryKeyOptions());
+            $table->addColumn('ip_address', 'VARCHAR(45)', ['NOT NULL']);
+            $table->addColumn('submitted_at', 'DATETIME', ['NOT NULL']);
+            $table->addIndex('ip_address', 'idx_contact_rate_limits_ip');
+            $table->db(1);
+        });
+    }
+
+    public function createDossiersPreinscriptionTable()
+    {
+        return $this->createTable('dossiers_preinscription', function ($table) {
+            $table->addColumn('id', 'INTEGER', $this->primaryKeyOptions());
+            $table->addColumn('numero_dossier', 'VARCHAR(20)', ['DEFAULT NULL', 'UNIQUE']);
+            $table->addColumn('nom', 'VARCHAR(100)', ['NOT NULL']);
+            $table->addColumn('prenoms', 'VARCHAR(150)', ['NOT NULL']);
+            $table->addColumn('date_naissance', 'DATE', ['NOT NULL']);
+            $table->addColumn('lieu_naissance', 'VARCHAR(120)', ['NOT NULL']);
+            $table->addColumn('sexe', 'VARCHAR(10)', ['NOT NULL']);
+            $table->addColumn('nationalite', 'VARCHAR(80)', ['NOT NULL']);
+            $table->addColumn('matricule_mena', 'VARCHAR(50)', ['DEFAULT NULL']);
+            $table->addColumn('statut_affectation', 'VARCHAR(20)', ['NOT NULL']);
+            $table->addColumn('etablissement_origine', 'VARCHAR(150)', ['NOT NULL']);
+            $table->addColumn('niveau_id', 'INTEGER', ['NOT NULL']);
+            $table->addColumn('serie_id', 'INTEGER', ['DEFAULT NULL']);
+            $table->addColumn('responsable_nom', 'VARCHAR(150)', ['NOT NULL']);
+            $table->addColumn('lien_parente', 'VARCHAR(80)', ['NOT NULL']);
+            $table->addColumn('telephone', 'VARCHAR(20)', ['NOT NULL']);
+            $table->addColumn('email', 'VARCHAR(254)', ['DEFAULT NULL']);
+            $table->addColumn('profession', 'VARCHAR(120)', ['NOT NULL']);
+            $table->addColumn('commune', 'VARCHAR(100)', ['NOT NULL']);
+            $table->addColumn('extrait_acte_path', 'VARCHAR(255)', ['NOT NULL']);
+            $table->addColumn('bulletin_path', 'VARCHAR(255)', ['NOT NULL']);
+            $table->addColumn('photo_identite_path', 'VARCHAR(255)', ['NOT NULL']);
+            $table->addColumn('statut', 'VARCHAR(20)', ['NOT NULL', "DEFAULT 'soumis'"]);
+            $table->addColumn('created_at', 'DATETIME', ['NOT NULL']);
+            $table->addColumn('updated_at', 'DATETIME', ['NOT NULL']);
+            $table->addIndex('statut', 'idx_dossiers_preinscription_statut');
+            $table->db(1);
+        });
+    }
+
     public function createUsersAccountTable()
     {
         return $this->createTable('usersaccount', function ($table) {

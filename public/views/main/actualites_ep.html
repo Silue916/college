@@ -1,4 +1,26 @@
 {% extends layouts %}
+{% block title %}Actualités - {{ site.name|e }}{% endblock %}
 {% block content %}
-<div class="container"><h1>actualites</h1></div>
+<section class="page-banner"><div class="container"><p class="eyebrow">La vie de l’établissement</p><h1>Actualités</h1></div></section>
+<section class="container content-section">
+  {% if news is empty %}
+    <p class="empty-state">Aucune actualité n’est publiée pour le moment.</p>
+  {% else %}
+    <div class="news-grid">
+      {% for item in news %}
+        <article class="news-card">
+          {% if item.image_path %}
+            <img src="{{ item.image_path|e }}" alt="">
+          {% endif %}
+          <div class="news-card-content">
+            <p class="news-date">{{ item.published_at|date('d/m/Y')|e }}</p>
+            <h2>{{ item.title|e }}</h2>
+            <p class="news-excerpt">{{ item.content|slice(0, 260)|e }}{% if item.content|length > 260 %}…{% endif %}</p>
+            <a href="/actualite/?id={{ item.id|e }}">Lire l’actualité</a>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  {% endif %}
+</section>
 {% endblock %}

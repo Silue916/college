@@ -1,0 +1,27 @@
+{% extends layouts %}
+{% block title %}Suivre mon dossier - {{ site.name|e }}{% endblock %}
+{% block content %}
+<section class="page-banner"><div class="container"><p class="eyebrow">Préinscription</p><h1>Suivre mon dossier</h1></div></section>
+<section class="container content-section tracking-content">
+  <p>Saisissez le numéro de dossier et la date de naissance de l’élève pour consulter son statut.</p>
+  {% if suivi_message %}<div class="alert alert-info" role="status">{{ suivi_message|e }}</div>{% endif %}
+  {% if dossier_statut %}
+    <div class="tracking-result">
+      <p>Dossier <strong>{{ numero_dossier|e }}</strong></p>
+      <p>Statut : <strong>{{ dossier_statut|e }}</strong></p>
+    </div>
+  {% endif %}
+  <form method="POST" class="tracking-form">
+    {{ __csrf() }}
+    <div class="form-field">
+      <label for="numero_dossier">Numéro de dossier</label>
+      <input id="numero_dossier" name="numero_dossier" autocomplete="off" required value="{{ numero_dossier|e }}">
+    </div>
+    <div class="form-field">
+      <label for="date_naissance">Date de naissance de l’élève</label>
+      <input id="date_naissance" name="date_naissance" type="date" required value="{{ date_naissance|e }}">
+    </div>
+    <button class="btn btn-primary" type="submit">Consulter le statut</button>
+  </form>
+</section>
+{% endblock %}
