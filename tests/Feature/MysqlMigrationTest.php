@@ -21,6 +21,8 @@ class MysqlMigrationTest extends TestCase
             self::fail('MYSQL_TEST_DSN must target the isolated epaphrodites_test database.');
         }
 
+        require_once dirname(__DIR__, 2) . '/bin/config/SetDirectory.php';
+
         $connection = new PDO(
             $dsn,
             getenv('MYSQL_TEST_USER') ?: '',
