@@ -7,7 +7,6 @@ use Epaphrodites\controllers\controllers\main;
 use Epaphrodites\controllers\controllers\users;
 use Epaphrodites\controllers\controllers\chats;
 use Epaphrodites\controllers\controllers\setting;
-use Epaphrodites\controllers\controllers\site;
 use Epaphrodites\controllers\controllers\SiteController;
 
 trait controllerMap
@@ -31,12 +30,11 @@ trait controllerMap
     private function controllerMap(): array
     {
         return [
-			'SiteController' => [ new SiteController, 'SwitchControllers', true, 'SiteControllerFolder', _DIR_ADMIN_TEMP_ ],
             "api" => [ new api, 'SwitchApiControllers', false ],
             "users" => [ new users, 'SwitchControllers', true, 'usersFolder', _DIR_ADMIN_TEMP_ ],
             "chats" => [ new chats, 'SwitchControllers', true, 'chatsFolder', _DIR_ADMIN_TEMP_ ],
             "setting" => [ new setting, 'SwitchControllers', true, 'settingFolder', _DIR_ADMIN_TEMP_ ],
-            "site" => [ new site, 'SwitchControllers', false, 'main', _DIR_MAIN_TEMP_ ],
+            "site" => [ new SiteController, 'SwitchControllers', false, 'main', _DIR_MAIN_TEMP_ ],
         ];
     }
 }

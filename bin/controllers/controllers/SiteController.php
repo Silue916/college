@@ -5,8 +5,6 @@ use Epaphrodites\controllers\switchers\MainSwitchers;
         
 final class SiteController extends MainSwitchers
 {
-    private object $msg;
-
     /**
     * Initialize object properties when an instance is created
     * @return void
@@ -22,7 +20,6 @@ final class SiteController extends MainSwitchers
     */
     private function initializeObjects(): void
     {
-        $this->msg = $this->getFunctionObject(static::initNamespace(), 'msg');
     }       
         
     /**
