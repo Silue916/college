@@ -7,7 +7,7 @@ trait makeUpGearShift{
     public function createUsersAccountTable()
     {
         return $this->createTable('usersaccount', function ($table) {
-                $table->addColumn('_id', 'INTEGER', ['PRIMARY KEY', 'AUTOINCREMENT']);
+                $table->addColumn('_id', 'INTEGER', ['PRIMARY KEY', 'AUTO_INCREMENT']);
                 $table->addColumn('login', 'TEXT' , ['NOT NULL']);
                 $table->addColumn('password', 'TEXT' , ['NOT NULL']);
                 $table->addColumn('namesurname', 'TEXT' , ['DEFAULT NULL']);
@@ -25,11 +25,11 @@ trait makeUpGearShift{
     public function createAnneesScolairesTable()
     {
         return $this->createTable('annees_scolaires', function ($table) {
-            $table->addColumn('id', 'INTEGER', ['PRIMARY KEY', 'AUTOINCREMENT']);
+            $table->addColumn('id', 'INTEGER', ['PRIMARY KEY', 'AUTO_INCREMENT']);
             $table->addColumn('libelle', 'VARCHAR(20)', ['NOT NULL']);
             $table->addColumn('date_debut', 'DATE', ['NOT NULL']);
             $table->addColumn('date_fin', 'DATE', ['NOT NULL']);
-            $table->addColumn('type_periode', 'VARCHAR(20)', ['NOT NULL', 'DEFAULT trimestre']);
+            $table->addColumn('type_periode', 'VARCHAR(20)', ['NOT NULL', "DEFAULT 'trimestre'"]);
             $table->addColumn('est_active', 'INTEGER', ['NOT NULL', 'DEFAULT 0']);
             $table->db(1);
         });
@@ -38,7 +38,7 @@ trait makeUpGearShift{
     public function createPeriodesTable()
     {
         return $this->createTable('periodes', function ($table) {
-            $table->addColumn('id', 'INTEGER', ['PRIMARY KEY', 'AUTOINCREMENT']);
+            $table->addColumn('id', 'INTEGER', ['PRIMARY KEY', 'AUTO_INCREMENT']);
             $table->addColumn('annee_id', 'INTEGER', ['NOT NULL']);
             $table->addColumn('numero', 'INTEGER', ['NOT NULL']);
             $table->addColumn('date_debut', 'DATE', ['NOT NULL']);
@@ -51,7 +51,7 @@ trait makeUpGearShift{
     public function createNiveauxTable()
     {
         return $this->createTable('niveaux', function ($table) {
-            $table->addColumn('id', 'INTEGER', ['PRIMARY KEY', 'AUTOINCREMENT']);
+            $table->addColumn('id', 'INTEGER', ['PRIMARY KEY', 'AUTO_INCREMENT']);
             $table->addColumn('code', 'VARCHAR(10)', ['NOT NULL']);
             $table->addColumn('cycle', 'INTEGER', ['NOT NULL']);
             $table->addColumn('ordre', 'INTEGER', ['NOT NULL']);
@@ -62,7 +62,7 @@ trait makeUpGearShift{
     public function createSeriesTable()
     {
         return $this->createTable('series', function ($table) {
-            $table->addColumn('id', 'INTEGER', ['PRIMARY KEY', 'AUTOINCREMENT']);
+            $table->addColumn('id', 'INTEGER', ['PRIMARY KEY', 'AUTO_INCREMENT']);
             $table->addColumn('code', 'VARCHAR(10)', ['NOT NULL']);
             $table->addColumn('libelle', 'VARCHAR(50)', ['NOT NULL']);
             $table->db(1);
@@ -72,7 +72,7 @@ trait makeUpGearShift{
     public function createClassesTable()
     {
         return $this->createTable('classes', function ($table) {
-            $table->addColumn('id', 'INTEGER', ['PRIMARY KEY', 'AUTOINCREMENT']);
+            $table->addColumn('id', 'INTEGER', ['PRIMARY KEY', 'AUTO_INCREMENT']);
             $table->addColumn('annee_id', 'INTEGER', ['NOT NULL']);
             $table->addColumn('niveau_id', 'INTEGER', ['NOT NULL']);
             $table->addColumn('serie_id', 'INTEGER', ['DEFAULT NULL']);
@@ -85,7 +85,7 @@ trait makeUpGearShift{
     public function createMatieresTable()
     {
         return $this->createTable('matieres', function ($table) {
-            $table->addColumn('id', 'INTEGER', ['PRIMARY KEY', 'AUTOINCREMENT']);
+            $table->addColumn('id', 'INTEGER', ['PRIMARY KEY', 'AUTO_INCREMENT']);
             $table->addColumn('code', 'VARCHAR(20)', ['NOT NULL']);
             $table->addColumn('libelle', 'VARCHAR(100)', ['NOT NULL']);
             $table->db(1);
@@ -95,7 +95,7 @@ trait makeUpGearShift{
     public function createCoefficientsTable()
     {
         return $this->createTable('coefficients', function ($table) {
-            $table->addColumn('id', 'INTEGER', ['PRIMARY KEY', 'AUTOINCREMENT']);
+            $table->addColumn('id', 'INTEGER', ['PRIMARY KEY', 'AUTO_INCREMENT']);
             $table->addColumn('niveau_id', 'INTEGER', ['NOT NULL']);
             $table->addColumn('serie_id', 'INTEGER', ['DEFAULT NULL']);
             $table->addColumn('matiere_id', 'INTEGER', ['NOT NULL']);
