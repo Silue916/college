@@ -49,10 +49,17 @@ jobs:
               "USER": "root",
               "PASSWORD": "root",
           })
-          config["SITE"]["PHONE"] = "+225 0102030405"
           with open(path, "w", encoding="utf-8") as settings:
               config.write(settings)
           PY
+          php -r '
+          $config = parse_ini_file("bin/config/Config.ini", true, INI_SCANNER_TYPED);
+          $phone = preg_replace("/[^+0-9]/", "", $config["SITE"]["PHONE"] ?? "");
+          if (!is_string($phone) || preg_match("/^\\+225[0-9]{10}$/", $phone) !== 1) {
+              fwrite(STDERR, "SITE.PHONE must be a valid Ivorian phone number in Config.ini\n");
+              exit(1);
+          }
+          '
       - name: PHPStan
         run: vendor/bin/phpstan analyse --memory-limit=512M
       - name: MySQL migrations and seeding
