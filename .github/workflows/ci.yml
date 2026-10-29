@@ -52,14 +52,6 @@ jobs:
           with open(path, "w", encoding="utf-8") as settings:
               config.write(settings)
           PY
-          php -r '
-          $config = parse_ini_file("bin/config/Config.ini", true, INI_SCANNER_TYPED);
-          $phone = preg_replace("/[^+0-9]/", "", $config["SITE"]["PHONE"] ?? "");
-          if (!is_string($phone) || preg_match("/^\\+225[0-9]{10}$/", $phone) !== 1) {
-              fwrite(STDERR, "SITE.PHONE must be a valid Ivorian phone number in Config.ini\n");
-              exit(1);
-          }
-          '
       - name: PHPStan
         run: vendor/bin/phpstan analyse --memory-limit=512M
       - name: MySQL migrations and seeding
@@ -74,6 +66,24 @@ jobs:
           PUBLIC_SITE_MYSQL_USER: root
           PUBLIC_SITE_MYSQL_PASSWORD: root
         run: |
+          python3 - <<'PY'
+          import configparser
+
+          path = "bin/config/Config.ini"
+          config = configparser.ConfigParser()
+          config.optionxform = str
+          config.read(path)
+          config["SITE"]["PHONE"] = "+225 0102030405"
+          with open(path, "w", encoding="utf-8") as settings:
+              config.write(settings)
+          PY
+
+          php -r '
+          require "bin/config/SetDirectory.php";
+          require "vendor/autoload.php";
+          Epaphrodites\services\PublicSiteConfig::local();
+          '
+
           php -S 127.0.0.1:8000 > /tmp/epaphrodites-server.log 2>&1 &
 
           for attempt in $(seq 1 30); do
