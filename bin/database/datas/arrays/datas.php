@@ -19,9 +19,14 @@ class datas
     {
 
         $list = [
-            1 => [ '_id' => 1, 'label' => 'SUPER ADMINISTRATOR' ],
-            2 => [ '_id' => 2, 'label' => 'ADMINISTRATOR' ],
-            3 => [ '_id' => 3, 'label' => 'USERS' ],
+            1 => [ '_id' => 1, 'label' => 'ADMIN (SUPER ADMINISTRATOR)' ],
+            2 => [ '_id' => 2, 'label' => 'ADMIN (ADMINISTRATOR)' ],
+            3 => [ '_id' => 3, 'label' => 'LEGACY USERS (RESTRICTED)' ],
+            4 => [ '_id' => 4, 'label' => 'SCOLARITÉ' ],
+            5 => [ '_id' => 5, 'label' => 'COMPTABILITÉ' ],
+            6 => [ '_id' => 6, 'label' => 'ENSEIGNANT' ],
+            7 => [ '_id' => 7, 'label' => 'ÉLÈVE' ],
+            8 => [ '_id' => 8, 'label' => 'PARENT' ],
         ];
 
         return $this->returnData($list, $key, $need );

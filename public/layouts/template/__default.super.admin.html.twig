@@ -113,24 +113,6 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " target="_blank" href="{{ 'https://epaphrodite.slack.com/' }}">
-                    <i class="bi bi-slack"></i>
-                    <span>Epaphrodites Slack</span>
-                </a>
-            </li>  
-            <li class="nav-item">
-                <a class="nav-link " target="_blank" href="{{ 'https://github.com/epaphrodites/epaphrodites' }}">
-                    <i class="bi bi-github"></i>
-                    <span>Epaphrodites GitHub</span>
-                </a>
-            </li> 
-            <li class="nav-item">
-                <a class="nav-link " target="_blank" href="{{ 'https://www.youtube.com/@epaphroditeslab/playlists' }}">
-                    <i class="bi bi-youtube"></i>
-                    <span>Video courses</span>
-                </a>
-            </li>                            
-            <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#profil-nav" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-person-circle"></i><span>My profile</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
@@ -147,48 +129,6 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-folder"></i><span>Documents</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="icons-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a target="_blank" href="https://epaphrodite.org/">
-                            <i class="bi bi-circle"></i><span>Epaphrodite docs</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>   
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#writing-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-laptop-fill"></i><span>Bot writing</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="writing-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="{{ __path("chats@start_bot_writing") }}">
-                            <i class="bi bi-circle"></i><span>Start bot writing</span>
-                        </a> 
-                    </li>
-                </ul>
-            </li>                      
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#robot-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-robot"></i><span>ChatBot</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="robot-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="{{ __path("chats@start_chatbot_model_one") }}">
-                            <i class="bi bi-circle"></i><span>Start bot model one</span>
-                        </a> 
-                        <a href="{{ __path("chats@start_chatbot_model_two") }}">
-                            <i class="bi bi-circle"></i><span>Start modele model two</span>
-                        </a>
-                        <a href="{{ __path("chats@start_ollama_chatbot") }}">
-                            <i class="bi bi-circle"></i><span>Start Ollama LLAMA3:8B</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>                                                                 
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#import-nav" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-upload"></i><span>Import management</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -213,6 +153,11 @@
                     </li>
                 </ul>
             </li>             
+            <li class="nav-item">
+                <a class="nav-link" href="{{ __path('students@manage_students') }}">
+                    <i class="bi bi-mortarboard"></i><span>Students management</span>
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#usersright-nav" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-lock"></i><span>Right management</span><i class="bi bi-chevron-down ms-auto"></i>

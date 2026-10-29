@@ -2,6 +2,8 @@
 
 namespace Epaphrodites\controllers\switchers;
 
+use Epaphrodites\services\AuthGuard;
+
 class ControllersSwitchers extends MergeControllers
 {
 
@@ -17,18 +19,15 @@ class ControllersSwitchers extends MergeControllers
         bool $switch = false
     ):bool
     {
-     
-        static::class('crsf')->tocsrf() === false
-                     ? static::class('errors')->error_403() 
-                     : NULL;
+        if ($controller !== ($provider[0] ?? null)) {
+            return false;
+        }
 
         if ($switch === false) {
-            return $controller === $provider[0] ? true : false;
-        } else {
-
-            return $controller === $provider[0] && static::class('session')->id() !== NULL  
-                        ? true 
-                        : false;
+            return true;
         }
+
+        AuthGuard::requireAuth();
+        return true;
     }
 }

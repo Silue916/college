@@ -23,10 +23,10 @@ class GetModulesList extends RighstList
             'statistic' => 'STATICS MANAGEMENT',
             'annuaire' => 'DIRECTORY MANAGEMENT',
             'habilit' => 'AUTHORIZATIONS',
-            'chatbot' => 'CHATBOT',
             'faq' => 'FAQ (Frequently Asked Questions)',
             'chats' => 'CHAT MESSAGES',
             'users' => 'USERS MANAGEMENT',
+            'students' => 'STUDENTS MANAGEMENT',
             'actions' => 'ACTIONS MANAGEMENT',
             'setting' => 'SYSTEM SETTING',
         ];

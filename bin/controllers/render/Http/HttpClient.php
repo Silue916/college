@@ -30,7 +30,11 @@ class HttpClient extends HttpRequest
     {
         $httpRequest = $this->HttpRequest();
         
-        return (!empty($httpRequest) && $httpRequest !== "/" && strlen($httpRequest) > 1 && $httpRequest[-1] === "/")
+        if ($httpRequest === "/") {
+            return _HOME_;
+        }
+
+        return (!empty($httpRequest) && strlen($httpRequest) > 1 && $httpRequest[-1] === "/")
             ? substr($httpRequest, 1)
             : _DASHBOARD_;
     }

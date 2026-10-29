@@ -361,7 +361,7 @@ trait gearQueryChains
     public function driver($key): string
     {
         // Load env
-        gearQueryChains::env();
+        self::env();
 
         $db = max(1, (int) $key);
 

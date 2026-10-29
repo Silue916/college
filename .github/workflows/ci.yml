@@ -8,16 +8,53 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: epaphrodites_test
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -proot"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
     steps:
       - uses: actions/checkout@v4
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
-          extensions: pdo_mysql, pdo_sqlite, gd, intl, mbstring, zip
+          extensions: curl, pdo_mysql, pdo_sqlite, gd, intl, mbstring, zip
       - name: Install dependencies
         run: composer install --no-interaction --prefer-dist
+      - name: Configure example settings
+        run: |
+          cp bin/config/Config.ini.example bin/config/Config.ini
+          cp bin/config/email.ini.example bin/config/email.ini
       - name: PHPStan
         run: vendor/bin/phpstan analyse --memory-limit=512M
-      - name: PHPUnit
-        run: vendor/bin/phpunit
+      - name: MySQL migrations and seeding
+        env:
+          MYSQL_TEST_DSN: mysql:host=127.0.0.1;port=3306;dbname=epaphrodites_test;charset=utf8mb4
+          MYSQL_TEST_USER: root
+          MYSQL_TEST_PASSWORD: root
+        run: vendor/bin/phpunit --filter MysqlMigrationTest
+      - name: Start web server and run PHPUnit
+        run: |
+          php -S 127.0.0.1:8000 > /tmp/epaphrodites-server.log 2>&1 &
+
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:8000/ > /dev/null; then
+              break
+            fi
+            sleep 1
+          done
+
+          curl --fail --silent http://127.0.0.1:8000/ > /dev/null || {
+            cat /tmp/epaphrodites-server.log
+            exit 1
+          }
+          vendor/bin/phpunit

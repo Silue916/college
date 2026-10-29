@@ -136,7 +136,7 @@ define('_FAKE_', 'view/');
 define('_HOME_', _FAKE_ . 'index/');
 
 # Login page route
-define('_LOGIN_', _FAKE_ . 'login/');
+define('_LOGIN_', 'connexion/');
 
 # Logout route
 define('_LOGOUT_', 'logout/');

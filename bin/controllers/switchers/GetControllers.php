@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Epaphrodites\controllers\switchers;
 
 use Epaphrodites\controllers\controllerMap\controllerMap;
+use Epaphrodites\services\AuthGuard;
 
 class GetControllers extends ControllersSwitchers
 {
@@ -21,6 +22,14 @@ class GetControllers extends ControllersSwitchers
         array $provider = [], 
         string|null $paths = null
     ): void{
+        if (
+            strtoupper($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST'
+            && ($provider[0] ?? null) !== 'api'
+            && static::class('crsf')->tocsrf() === false
+        ) {
+            static::class('errors')->error_403();
+        }
+
         $controllerMap = (array) $this->controllerMap();
 
         foreach ($controllerMap as $controllerName => $method) {
@@ -28,9 +37,14 @@ class GetControllers extends ControllersSwitchers
                 continue;
             }
     
-            [$controller, $methodName, $switcher, $findPath, $views] = $method + [null, null, false, null, null];
+            [$controller, $methodName, $switcher, $findPath, $views, $allowedRoles] = $method
+                + [null, null, false, null, null, []];
             
             if (static::getController($controllerName, $provider, $switcher)) {
+                if ($switcher === true && $allowedRoles !== []) {
+                    AuthGuard::requireRole($allowedRoles);
+                }
+
                 $paths = $this->getPath($paths, $findPath);
                 $controllerInstance = $this;
                 $arguments = [$controller, $paths ?? null, $switcher, $views];

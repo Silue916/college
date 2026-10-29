@@ -5,6 +5,7 @@ namespace Epaphrodites\epaphrodites\Kernel;
 use Epaphrodites\controllers\render\Http\ConfigHttp;
 use Epaphrodites\controllers\switchers\GetControllers;
 use Epaphrodites\epaphrodites\EpaphMozart\templatesConfig\ConfigDashboardPages;
+use Epaphrodites\services\AuthGuard;
 
 class runKernel extends ConfigHttp
 {
@@ -50,11 +51,9 @@ class runKernel extends ConfigHttp
         /**
          * Get user authentification page or destroy session
          */
-        if ($this->GetUrl === _DASHBOARD_ && static::class('session')->id() === NULL) {
-
-            static::class('session')->deconnexion();
-
-            $this->GetUrl = (string) $this->InterfaceManager->main();
+        if ($this->GetUrl === _DASHBOARD_) {
+            AuthGuard::requireAuth();
+            AuthGuard::requireRole(['admin']);
         }
 
         /**

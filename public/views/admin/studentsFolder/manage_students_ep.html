@@ -1,0 +1,197 @@
+{% extends layouts %}
+{% from forms import input_field, select_field, submit %}
+{% from message import alert_msg %}
+{% from breadcrumb import breadcrumb_field %}
+{% block content %}
+<div class="container-fluid">
+    {{ alert_msg(reponse, alert) }}
+    {{ breadcrumb_field('STUDENT MANAGEMENT') }}
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>Students management</h1>
+        <div>
+            <a class="btn btn-outline-primary" href="{{ __path('students@manage_students') }}">Active students</a>
+            <a class="btn btn-outline-secondary" href="{{ __path('students@manage_students') }}?archived=1">Archived students</a>
+        </div>
+    </div>
+
+    <div class="card p-3 mb-4">
+        <h2>{{ editing_id ? 'Update student' : 'Register a student' }}</h2>
+        {% if classes is empty %}
+            <p>No classes are available. Create a class before registering a student.</p>
+        {% endif %}
+
+        <form method="POST" action="{{ __path('students@manage_students') }}">
+            {{ __csrf() }}
+            <input type="hidden" name="action" value="save">
+            <input type="hidden" name="archived" value="{{ archived ? '1' : '0' }}">
+            {% if editing_id %}
+                <input type="hidden" name="student_id" value="{{ editing_id|e }}">
+            {% endif %}
+
+            <div class="row g-3">
+                <div class="col-md-4">
+                    {{ input_field({
+                        label: 'Matricule',
+                        name: 'matricule',
+                        id: 'matricule',
+                        value: form_values.matricule|e,
+                        maxlength: 30,
+                        require: true
+                    }) }}
+                </div>
+                <div class="col-md-4">
+                    {{ input_field({
+                        label: 'Last name',
+                        name: 'nom',
+                        id: 'nom',
+                        value: form_values.nom|e,
+                        maxlength: 100,
+                        require: true
+                    }) }}
+                </div>
+                <div class="col-md-4">
+                    {{ input_field({
+                        label: 'First name',
+                        name: 'prenom',
+                        id: 'prenom',
+                        value: form_values.prenom|e,
+                        maxlength: 100,
+                        require: true
+                    }) }}
+                </div>
+                <div class="col-md-4">
+                    {{ select_field({
+                        label: 'Class',
+                        name: 'classe_id',
+                        id: 'classe_id',
+                        init: 'Choose a class',
+                        value: 'id',
+                        selected: 'nom',
+                        position: form_values.classe_id,
+                        datas: classes,
+                        require: true
+                    }) }}
+                </div>
+                <div class="col-md-4">
+                    {{ input_field({
+                        label: 'Date of birth',
+                        name: 'date_naissance',
+                        id: 'date_naissance',
+                        type: 'date',
+                        value: form_values.date_naissance|e,
+                        maxlength: 10
+                    }) }}
+                </div>
+                <div class="col-md-4">
+                    {{ input_field({
+                        label: 'Sex',
+                        name: 'sexe',
+                        id: 'sexe',
+                        value: form_values.sexe|e,
+                        maxlength: 20
+                    }) }}
+                </div>
+                <div class="col-md-4">
+                    {{ input_field({
+                        label: 'Phone',
+                        name: 'telephone',
+                        id: 'telephone',
+                        type: 'tel',
+                        value: form_values.telephone|e,
+                        maxlength: 30
+                    }) }}
+                </div>
+                <div class="col-md-4">
+                    {{ input_field({
+                        label: 'Email',
+                        name: 'email',
+                        id: 'email',
+                        type: 'email',
+                        value: form_values.email|e,
+                        maxlength: 254
+                    }) }}
+                </div>
+                <div class="col-md-12">
+                    <label class="form-label" for="adresse">Address</label>
+                    <textarea class="form-control" name="adresse" id="adresse" maxlength="2000">{{ form_values.adresse|e }}</textarea>
+                </div>
+                <div class="col-md-4">
+                    {{ submit({
+                        label: editing_id ? 'Update student' : 'Register student',
+                        icon: 'bi bi-person-check'
+                    }) }}
+                </div>
+                {% if editing_id %}
+                    <div class="col-md-4 align-self-center">
+                        <a href="{{ __path('students@manage_students') }}{% if archived %}?archived=1{% endif %}">Cancel editing</a>
+                    </div>
+                {% endif %}
+            </div>
+        </form>
+    </div>
+
+    <h2>{{ archived ? 'Archived students' : 'Registered students' }} ({{ total }})</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Matricule</th>
+                    <th>Last name</th>
+                    <th>First name</th>
+                    <th>Class</th>
+                    <th>Date of birth</th>
+                    <th>Sex</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                    <tr>
+                        <td>{{ student.matricule|e }}</td>
+                        <td>{{ student.nom|e }}</td>
+                        <td>{{ student.prenom|e }}</td>
+                        <td>{{ class_names[student.classe_id]|default('Unknown class')|e }}</td>
+                        <td>{{ student.date_naissance|e }}</td>
+                        <td>{{ student.sexe|e }}</td>
+                        <td>{{ student.telephone|e }}</td>
+                        <td>{{ student.email|e }}</td>
+                        <td>{{ student.adresse|e }}</td>
+                        <td class="text-nowrap">
+                            <a class="btn btn-sm btn-outline-primary" href="{{ __path('students@manage_students') }}?id={{ student.id|e }}{% if archived %}&amp;archived=1{% endif %}">Edit</a>
+                            <form method="POST" action="{{ __path('students@manage_students') }}" class="d-inline">
+                                {{ __csrf() }}
+                                <input type="hidden" name="student_id" value="{{ student.id|e }}">
+                                <input type="hidden" name="archived" value="{{ archived ? '1' : '0' }}">
+                                <input type="hidden" name="action" value="{{ archived ? 'restore' : 'archive' }}">
+                                <button class="btn btn-sm {{ archived ? 'btn-outline-success' : 'btn-outline-danger' }}" type="submit">
+                                    {{ archived ? 'Restore' : 'Archive' }}
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="10">No students to display.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% if total_pages > 1 %}
+        <nav aria-label="Students pages" class="d-flex gap-2">
+            {% if current_page > 1 %}
+                <a class="btn btn-outline-secondary" href="?{% if archived %}archived=1&amp;{% endif %}_p={{ current_page - 1 }}">Previous</a>
+            {% endif %}
+            <span class="align-self-center">Page {{ current_page }} of {{ total_pages }}</span>
+            {% if current_page < total_pages %}
+                <a class="btn btn-outline-secondary" href="?{% if archived %}archived=1&amp;{% endif %}_p={{ current_page + 1 }}">Next</a>
+            {% endif %}
+        </nav>
+    {% endif %}
+</div>
+{% endblock %}

@@ -8,6 +8,11 @@ PASSWORD = mot_de_passe_fictif
 SOCKET = false
 SOCKET_PATH =
 
+[AUTHENTICATION]
+ADMIN_EMAIL = admin@example.invalid
+ADMIN_PASSWORD =
+APP_URL = https://example.invalid
+
 [2_CONFIGURATION]
 DRIVER = sqlite
 DATABASE = tests.sqlite

@@ -53,6 +53,13 @@ class token_csrf extends GeneratedValues{
      */
     public function tocsrf():bool{
 
+        if (
+            strtoupper($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST'
+            && !isset($_POST[CSRF_FIELD_NAME])
+        ) {
+            return false;
+        }
+
         return (isset($_POST[CSRF_FIELD_NAME])||isset($_GET[CSRF_FIELD_NAME])) ? $this->process() : true;
     }
 

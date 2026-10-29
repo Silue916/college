@@ -26,26 +26,6 @@ class GetRightList extends epaphroditeClass
             'path' => 'usersFolder/edit_users_infos'
          ],
          [
-            'apps' => 'chatbot',
-            'libelle' => 'Start chatbot model one',
-            'path' => 'chatsFolder/start_chatbot_model_one',
-         ],   
-         [
-            'apps' => 'chatbot',
-            'libelle' => 'Start chatbot model two',
-            'path' => 'chatsFolder/start_chatbot_model_two',
-         ], 
-         [
-            'apps' => 'chatbot',
-            'libelle' => 'Start chatbot model three',
-            'path' => 'chatsFolder/start_chatbot_model_three',
-         ], 
-         [
-            'apps' => 'chatbot',
-            'libelle' => 'Start bot writing',
-            'path' => 'chatsFolder/start_bot_writing',
-         ],                                                       
-         [
             'apps' => 'users',
             'libelle' => 'Import system users',
             'path' => 'usersFolder/import_users',
@@ -55,6 +35,11 @@ class GetRightList extends epaphroditeClass
             'libelle' => 'List of system all Users',
             'path' => 'usersFolder/all_users_list',
          ], 
+         [
+            'apps' => 'students',
+            'libelle' => 'Manage students',
+            'path' => 'studentsFolder/manage_students',
+         ],
          [
             'apps' => 'actions',
             'libelle' => 'List of recent actions',

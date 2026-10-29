@@ -1,0 +1,7 @@
+[EMAIL]
+SERVER = smtp.example.invalid
+PORT = 587
+USER = utilisateur@example.invalid
+PASSWORD =
+HIDE_EMAIL = no-reply@example.invalid
+TITLE = Epaphrodites

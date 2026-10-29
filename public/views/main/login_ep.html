@@ -6,7 +6,7 @@
         <div class="secure" align="center">
             <img src="{{ __img('secure.svg') }}" alt="">
         </div>
-        <div class="texthead"><strong>AUTHENTIFICATION</strong></div>
+        <div class="texthead"><strong>CONNEXION</strong></div>
         <div class="reponses {{ class }}">{{ reponse ? reponse : "" }}</div>
         <form id="authentification" method="POST">
 
@@ -14,10 +14,10 @@
 
             {{ input_field(
                 { 
-                    type : 'text' , 
+                    type : 'text' ,
                     require : true ,
-                    name : '__login__' ,
-                    placeholder : 'Login...',
+                    name : 'identifier' ,
+                    placeholder : 'Adresse e-mail ou matricule',
                 }
             )}}
                  
@@ -25,23 +25,24 @@
                 {
                     require : true ,
                     type : 'password' , 
-                    name : '__password__',
-                    placeholder : 'Password...',
+                    name : 'password',
+                    placeholder : 'Mot de passe',
                 }
             )}} 
             
             {{ submit(
                 {
-                    label : 'Connexion',
+                    label : 'Se connecter',
                     icon : 'bi bi-lock'
                 }
             )}}
 
         </form>
+        <a href="/forgot_password/">Mot de passe oublié ?</a>
     </div>
 
     <div class="col-md-12 epaphrodite" align="center">
-        <a href="{{ __host() }}"><i class="icofont-long-arrow-left"></i> ADMINISTRATION</a>
+        <a href="{{ __host() }}"><i class="icofont-long-arrow-left"></i> ACCUEIL</a>
     </div>
 
 {% endblock %}

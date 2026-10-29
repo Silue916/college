@@ -15,8 +15,20 @@ class ConfigHttp extends HttpClient
         array|null $url = null
     ): string
     {
-        
-        return str_replace(_FAKE_, '', sprintf('%s/%s%s', isset($url[0]) ? $url[0] : '', $url[1], _MAIN_EXTENSION_ ));
+        $segments = array_values(array_filter(
+            $url ?? [],
+            static fn (string $segment): bool => $segment !== ''
+        ));
+
+        if (count($segments) === 1 && $segments[0] !== 'api') {
+            return str_replace(
+                _FAKE_,
+                '',
+                $segments[0] . _MAIN_EXTENSION_
+            );
+        }
+
+        return str_replace(_FAKE_, '', sprintf('%s/%s%s', isset($url[0]) ? $url[0] : '', $url[1], _MAIN_EXTENSION_));
     }
 
     /**

@@ -2,6 +2,7 @@ vendor/
 .env
 *.env
 bin/config/Config.ini
+bin/config/email.ini
 uploads/
 static/docs/
 cache/
