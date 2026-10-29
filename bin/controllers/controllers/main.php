@@ -92,4 +92,70 @@ final class main extends MainSwitchers
         ]
     );
     }
+
+    /**
+    * start view function
+    * 
+    * @param string $html
+    * @return void
+    */
+     public final function accueil(string $html): void{
+    
+        $this->views( $html, [], false );
+    }
+
+    /**
+    * start view function
+    * 
+    * @param string $html
+    * @return void
+    */
+     public final function etablissement(string $html): void{
+    
+        $this->views( $html, [], false );
+    }
+
+    /**
+    * start view function
+    * 
+    * @param string $html
+    * @return void
+    */
+     public final function admission(string $html): void{
+    
+        $this->views( $html, [], false );
+    }
+
+    /**
+    * start view function
+    * 
+    * @param string $html
+    * @return void
+    */
+     public final function frais(string $html): void{
+    
+        $this->views( $html, [], false );
+    }
+
+    /**
+    * start view function
+    * 
+    * @param string $html
+    * @return void
+    */
+     public final function contact(string $html): void{
+    
+        $this->views( $html, [], false );
+    }
+
+    /**
+    * start view function
+    * 
+    * @param string $html
+    * @return void
+    */
+     public final function actualites(string $html): void{
+    
+        $this->views( $html, [], false );
+    }
 }
