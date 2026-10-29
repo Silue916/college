@@ -49,6 +49,7 @@ jobs:
               "USER": "root",
               "PASSWORD": "root",
           })
+          config["SITE"]["PHONE"] = "+225 0102030405"
           with open(path, "w", encoding="utf-8") as settings:
               config.write(settings)
           PY
