@@ -1,0 +1,1765 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Property Epaphrodites\\controllers\\controllers\\main\:\:\$visit is never read, only written\.$#'
+			identifier: property.onlyWritten
+			count: 1
+			path: bin/controllers/controllers/main.php
+
+		-
+			message: '#^Property Epaphrodites\\controllers\\controllers\\setting\:\:\$env is never read, only written\.$#'
+			identifier: property.onlyWritten
+			count: 1
+			path: bin/controllers/controllers/setting.php
+
+		-
+			message: '#^Property Epaphrodites\\controllers\\controllers\\setting\:\:\$msg is never read, only written\.$#'
+			identifier: property.onlyWritten
+			count: 1
+			path: bin/controllers/controllers/setting.php
+
+		-
+			message: '#^Expression on left side of \?\? is not nullable\.$#'
+			identifier: nullCoalesce.expr
+			count: 1
+			path: bin/controllers/controllers/users.php
+
+		-
+			message: '#^Expression in empty\(\) is always falsy\.$#'
+			identifier: empty.expr
+			count: 1
+			path: bin/controllers/render/Http/GetHttpMethod.php
+
+		-
+			message: '#^Constant Epaphrodites\\controllers\\render\\Http\\HttpClient\:\:SLEEP_MICROSECONDS is unused\.$#'
+			identifier: classConstant.unused
+			count: 1
+			path: bin/controllers/render/Http/HttpClient.php
+
+		-
+			message: '#^Constant Epaphrodites\\controllers\\render\\Http\\HttpClient\:\:TIMEOUT_SECONDS is unused\.$#'
+			identifier: classConstant.unused
+			count: 1
+			path: bin/controllers/render/Http/HttpClient.php
+
+		-
+			message: '#^PHPDoc tag @return with type mixed is not subtype of native type Twig\\Environment\.$#'
+			identifier: return.phpDocType
+			count: 1
+			path: bin/controllers/render/Twig/TwigConfig.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: bin/controllers/render/Twig/TwigConfig.php
+
+		-
+			message: '#^Negated boolean expression is always true\.$#'
+			identifier: booleanNot.alwaysTrue
+			count: 1
+			path: bin/controllers/render/Twig/TwigRender.php
+
+		-
+			message: '#^PHPDoc tag @param has invalid value \(array\|\[\] \$array\)\: Unexpected token "\[", expected type at offset 82 on line 5$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: bin/controllers/render/Twig/TwigRender.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$switch with type bool\|null is not subtype of native type bool\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/controllers/switchers/ControllersSwitchers.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$provider with type array\|null is not subtype of native type array\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/controllers/switchers/GetControllers.php
+
+		-
+			message: '#^Using nullsafe method call on non\-nullable type \$this\(Epaphrodites\\controllers\\switchers\\GetControllers\)\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: bin/controllers/switchers/GetControllers.php
+
+		-
+			message: '#^Variable \$paths on left side of \?\? always exists and is not nullable\.$#'
+			identifier: nullCoalesce.variable
+			count: 1
+			path: bin/controllers/switchers/GetControllers.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$key with type mixed is not subtype of native type string\.$#'
+			identifier: parameter.phpDocType
+			count: 2
+			path: bin/controllers/switchers/MainSwitchers.php
+
+		-
+			message: '#^Parameter \#1 \$datas of static method Epaphrodites\\controllers\\switchers\\MainSwitchers\:\:noSpace\(\) expects string, array\<mixed\> given\.$#'
+			identifier: argument.type
+			count: 2
+			path: bin/controllers/switchers/MainSwitchers.php
+
+		-
+			message: '#^Parameter \#1 \$type of function filter_input_array expects 0\|1\|2\|4\|5, int given\.$#'
+			identifier: argument.type
+			count: 1
+			path: bin/controllers/switchers/MainSwitchers.php
+
+		-
+			message: '#^Unsafe access to private property Epaphrodites\\controllers\\switchers\\MainSwitchers\:\:\$allowedMethods through static\:\:\.$#'
+			identifier: staticClassAccess.privateProperty
+			count: 1
+			path: bin/controllers/switchers/MainSwitchers.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\controllers\\switchers\\MainSwitchers\:\:forcingApiTokenVerification\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 1
+			path: bin/controllers/switchers/MainSwitchers.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\controllers\\switchers\\MainSwitchers\:\:forcingTokenVerification\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 1
+			path: bin/controllers/switchers/MainSwitchers.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\controllers\\switchers\\MainSwitchers\:\:getMessageContent\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 1
+			path: bin/controllers/switchers/MainSwitchers.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\controllers\\switchers\\MainSwitchers\:\:noSpace\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 4
+			path: bin/controllers/switchers/MainSwitchers.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$autorize with type bool\|null is not subtype of native type bool\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/controllers/switchers/MergeControllers.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$pages with type mixed is not subtype of native type string\.$#'
+			identifier: parameter.phpDocType
+			count: 2
+			path: bin/controllers/switchers/MergeControllers.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$target with type string\|null is not subtype of native type string\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/controllers/switchers/MergeControllers.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\controllers\\switchers\\MergeControllers\:\:directory\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 1
+			path: bin/controllers/switchers/MergeControllers.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$class with type mixed is not subtype of native type object\.$#'
+			identifier: parameter.phpDocType
+			count: 2
+			path: bin/controllers/switchers/contractController.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$pages with type mixed is not subtype of native type string\.$#'
+			identifier: parameter.phpDocType
+			count: 2
+			path: bin/controllers/switchers/contractController.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$SqlChaine with type string\|null is not subtype of native type string\.$#'
+			identifier: parameter.phpDocType
+			count: 2
+			path: bin/database/config/Contracts/DatabaseRequest.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$datas with type array\|null is not subtype of native type array\.$#'
+			identifier: parameter.phpDocType
+			count: 2
+			path: bin/database/config/Contracts/DatabaseRequest.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$param with type string\|null is incompatible with native type bool\.$#'
+			identifier: parameter.phpDocType
+			count: 2
+			path: bin/database/config/Contracts/DatabaseRequest.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$bd$#'
+			identifier: parameter.notFound
+			count: 2
+			path: bin/database/config/Contracts/DatabaseRequest.php
+
+		-
+			message: '#^Call to method selectDatabase\(\) on an unknown class MongoDB\\Client\.$#'
+			identifier: class.notFound
+			count: 1
+			path: bin/database/config/getConnexion/getConnexion.php
+
+		-
+			message: '#^Instantiated class MongoDB\\Client not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: bin/database/config/getConnexion/getConnexion.php
+
+		-
+			message: '#^Invalid type null to throw\.$#'
+			identifier: throw.notThrowable
+			count: 4
+			path: bin/database/config/getConnexion/getConnexion.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$actionType$#'
+			identifier: parameter.notFound
+			count: 2
+			path: bin/database/config/getConnexion/getConnexion.php
+
+		-
+			message: '#^Parameter \#1 \$message of class PDOException constructor expects string, null given\.$#'
+			identifier: argument.type
+			count: 5
+			path: bin/database/config/getConnexion/getConnexion.php
+
+		-
+			message: '#^Parameter \#2 \$port of method Redis\:\:connect\(\) expects int, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: bin/database/config/getConnexion/getConnexion.php
+
+		-
+			message: '#^Result of method Epaphrodites\\database\\config\\ini\\GetConfig\:\:getError\(\) \(void\) is used\.$#'
+			identifier: staticMethod.void
+			count: 9
+			path: bin/database/config/getConnexion/getConnexion.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 4
+			path: bin/database/config/ini/GetConfig.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between non\-empty\-array and false will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: bin/database/config/ini/GetConfig.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\database\\config\\ini\\GetConfig\:\:ConfigIniContent\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 1
+			path: bin/database/config/ini/GetConfig.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\database\\config\\ini\\GetConfig\:\:get\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 1
+			path: bin/database/config/ini/GetConfig.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\database\\config\\ini\\GetConfig\:\:getSection\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 1
+			path: bin/database/config/ini/GetConfig.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\database\\config\\ini\\GetConfig\:\:loadEnv\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 18
+			path: bin/database/config/ini/GetConfig.php
+
+		-
+			message: '#^Unreachable statement \- code above always terminates\.$#'
+			identifier: deadCode.unreachable
+			count: 19
+			path: bin/database/config/process/checkDatabase.php
+
+		-
+			message: '#^Loose comparison using \=\= between false and false will always evaluate to true\.$#'
+			identifier: equal.alwaysTrue
+			count: 1
+			path: bin/database/config/process/envLoader.php
+
+		-
+			message: '#^Cannot call method beginTransaction\(\) on array\|object\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: bin/database/config/process/sqlDatabase.php
+
+		-
+			message: '#^Cannot call method commit\(\) on array\|object\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: bin/database/config/process/sqlDatabase.php
+
+		-
+			message: '#^Cannot call method inTransaction\(\) on array\|object\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: bin/database/config/process/sqlDatabase.php
+
+		-
+			message: '#^Cannot call method prepare\(\) on array\|object\.$#'
+			identifier: method.nonObject
+			count: 2
+			path: bin/database/config/process/sqlDatabase.php
+
+		-
+			message: '#^Cannot call method rollBack\(\) on array\|object\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: bin/database/config/process/sqlDatabase.php
+
+		-
+			message: '#^Negated boolean expression is always true\.$#'
+			identifier: booleanNot.alwaysTrue
+			count: 4
+			path: bin/database/config/process/sqlDatabase.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$datas with type array\|null is not subtype of native type array\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/database/config/process/sqlDatabase.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$param with type bool\|null is not subtype of native type bool\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/database/config/process/sqlDatabase.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$sqlChaine with type string\|null is not subtype of native type string\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/database/config/process/sqlDatabase.php
+
+		-
+			message: '#^PHPDoc tag @param has invalid value \(array\|\[\] \$datas The data for query parameters\)\: Unexpected token "\[", expected type at offset 107 on line 5$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: bin/database/config/process/sqlDatabase.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$bd$#'
+			identifier: parameter.notFound
+			count: 3
+			path: bin/database/config/process/sqlDatabase.php
+
+		-
+			message: '#^PHPDoc tag @return with type bool\|null is not subtype of native type bool\.$#'
+			identifier: return.phpDocType
+			count: 1
+			path: bin/database/config/process/sqlDatabase.php
+
+		-
+			message: '#^PHPDoc tag @return with type int\|null is incompatible with native type void\.$#'
+			identifier: return.phpDocType
+			count: 1
+			path: bin/database/config/process/sqlDatabase.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$property$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/database/datas/arrays/datas.php
+
+		-
+			message: '#^Result of method Epaphrodites\\database\\query\\buildQuery\\buildGearShift\:\:copyTables\(\) \(void\) is used\.$#'
+			identifier: method.void
+			count: 1
+			path: bin/database/gearShift/makeGearShift.php
+
+		-
+			message: '#^Variable \$keys in empty\(\) always exists and is not falsy\.$#'
+			identifier: empty.variable
+			count: 1
+			path: bin/database/query/buildChaines/buildQueryChaines.php
+
+		-
+			message: '#^Call to function is_array\(\) with string will always evaluate to false\.$#'
+			identifier: function.impossibleType
+			count: 2
+			path: bin/database/query/buildChaines/gearQueryChains.php
+
+		-
+			message: '#^Call to private static method env\(\) of class Epaphrodites\\database\\query\\buildChaines\\gearQueryChains\.$#'
+			identifier: staticMethod.private
+			count: 1
+			path: bin/database/query/buildQuery/buildGearShift.php
+
+		-
+			message: '#^Match expression does not handle remaining value\: string$#'
+			identifier: match.unhandled
+			count: 1
+			path: bin/database/query/buildQuery/buildGearShift.php
+
+		-
+			message: '#^Method Epaphrodites\\database\\query\\buildQuery\\buildGearShift\:\:postresMethod\(\) has Exception in PHPDoc @throws tag but it''s not thrown\.$#'
+			identifier: throws.unusedType
+			count: 1
+			path: bin/database/query/buildQuery/buildGearShift.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$columns with type array\|string is not subtype of native type string\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/database/query/buildQuery/buildGearShift.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$columns$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/database/query/buildQuery/buildGearShift.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$db with type int\|null is not subtype of native type int\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/database/query/checkQueryChaines.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$index with type array\|null is incompatible with native type string\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/database/query/checkQueryChaines.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$multiChaine with type array\|null is not subtype of native type array\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/database/query/checkQueryChaines.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$param with type array\|null is not subtype of native type array\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/database/query/checkQueryChaines.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$rset with type array\|null is not subtype of native type array\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/database/query/checkQueryChaines.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$search with type array\|null is not subtype of native type array\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/database/query/checkQueryChaines.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$sign with type string\|null is not subtype of native type string\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/database/query/checkQueryChaines.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$between$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/database/query/checkQueryChaines.php
+
+		-
+			message: '#^PHPDoc tag @return with type mixed is not subtype of native type string\.$#'
+			identifier: return.phpDocType
+			count: 2
+			path: bin/database/query/checkQueryChaines.php
+
+		-
+			message: '#^PHPDoc tag @return with type string is incompatible with native type bool\.$#'
+			identifier: return.phpDocType
+			count: 1
+			path: bin/database/query/checkQueryChaines.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''mongodb'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 2
+			path: bin/database/requests/mainRequest/delete/delete.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''redis'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 2
+			path: bin/database/requests/mainRequest/delete/delete.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$idRights with type int is incompatible with native type string\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/database/requests/mainRequest/delete/delete.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''mongodb'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 3
+			path: bin/database/requests/mainRequest/insert/insert.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''redis'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 3
+			path: bin/database/requests/mainRequest/insert/insert.php
+
+		-
+			message: '#^PHPDoc tag @return with type array is incompatible with native type bool\.$#'
+			identifier: return.phpDocType
+			count: 1
+			path: bin/database/requests/mainRequest/insert/insert.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''mongodb'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 1
+			path: bin/database/requests/mainRequest/select/auth.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''oracle'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 1
+			path: bin/database/requests/mainRequest/select/auth.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''redis'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 1
+			path: bin/database/requests/mainRequest/select/auth.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''mongodb'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 3
+			path: bin/database/requests/mainRequest/select/count.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''redis'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 3
+			path: bin/database/requests/mainRequest/select/count.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''mongodb'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 1
+			path: bin/database/requests/mainRequest/select/general.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''oracle'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 1
+			path: bin/database/requests/mainRequest/select/general.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''redis'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 1
+			path: bin/database/requests/mainRequest/select/general.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''sqlserver'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 1
+			path: bin/database/requests/mainRequest/select/general.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''mongodb'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 3
+			path: bin/database/requests/mainRequest/select/get_id.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''oracle'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 3
+			path: bin/database/requests/mainRequest/select/get_id.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''redis'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 3
+			path: bin/database/requests/mainRequest/select/get_id.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''sqlserver'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 1
+			path: bin/database/requests/mainRequest/select/get_id.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''mongodb'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 2
+			path: bin/database/requests/mainRequest/select/select.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''oracle'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 2
+			path: bin/database/requests/mainRequest/select/select.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''redis'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 2
+			path: bin/database/requests/mainRequest/select/select.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''sqlserver'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 2
+			path: bin/database/requests/mainRequest/select/select.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''mongodb'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 7
+			path: bin/database/requests/mainRequest/update/update.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''oracle'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 1
+			path: bin/database/requests/mainRequest/update/update.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''redis'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 7
+			path: bin/database/requests/mainRequest/update/update.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$etat$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/database/requests/mainRequest/update/update.php
+
+		-
+			message: '#^Class Epaphrodites\\epaphrodites\\danho\\GuardPassword referenced with incorrect case\: Epaphrodites\\Epaphrodites\\danho\\GuardPassword\.$#'
+			identifier: class.nameCase
+			count: 2
+			path: bin/database/requests/typeRequest/noSqlRequest/insert/AutoMigrations/InitNoSeederGenerated.php
+
+		-
+			message: '#^Method Epaphrodites\\database\\requests\\typeRequest\\noSqlRequest\\update\\update\:\:noSqlChangeUsersPassword\(\) should return bool but returns int\.$#'
+			identifier: return.type
+			count: 3
+			path: bin/database/requests/typeRequest/noSqlRequest/update/update.php
+
+		-
+			message: '#^Method Epaphrodites\\database\\requests\\typeRequest\\noSqlRequest\\update\\update\:\:noSqlRedisChangeUsersPassword\(\) should return bool but returns int\.$#'
+			identifier: return.type
+			count: 3
+			path: bin/database/requests/typeRequest/noSqlRequest/update/update.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$email$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/database/requests/typeRequest/noSqlRequest/update/update.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$number$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/database/requests/typeRequest/noSqlRequest/update/update.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$usersname$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/database/requests/typeRequest/noSqlRequest/update/update.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between int and null will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 1
+			path: bin/database/requests/typeRequest/noSqlRequest/update/update.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between string and null will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 1
+			path: bin/database/requests/typeRequest/noSqlRequest/update/update.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$action$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/database/requests/typeRequest/sqlRequest/insert/setting.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between ''mysql'' and ''oracle'' will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: bin/database/requests/typeRequest/sqlRequest/insert/setting.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$Group$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/database/requests/typeRequest/sqlRequest/select/count.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$UsersLogin with type int is incompatible with native type string\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/database/requests/typeRequest/sqlRequest/update/update.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$login with type int is incompatible with native type string\.$#'
+			identifier: parameter.phpDocType
+			count: 2
+			path: bin/database/requests/typeRequest/sqlRequest/update/update.php
+
+		-
+			message: '#^Method Epaphrodites\\database\\query\\checkQueryChaines\:\:insert\(\) invoked with 2 parameters, 1 required\.$#'
+			identifier: arguments.count
+			count: 1
+			path: bin/database/seeders/databaseSeeding.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between non\-falsy\-string and true will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 1
+			path: bin/epaphrodites/Console/Models/CreateRequestFiles.php
+
+		-
+			message: '#^Call to function is_numeric\(\) with int will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: bin/epaphrodites/Console/Models/lunchServer.php
+
+		-
+			message: '#^Call to method Epaphrodites\\epaphrodites\\Console\\Models\\LunchServer\:\:shutdown\(\) on a separate line has no effect\.$#'
+			identifier: method.resultUnused
+			count: 2
+			path: bin/epaphrodites/Console/Models/lunchServer.php
+
+		-
+			message: '#^Loose comparison using \=\= between false and false will always evaluate to true\.$#'
+			identifier: equal.alwaysTrue
+			count: 1
+			path: bin/epaphrodites/Console/Models/lunchServer.php
+
+		-
+			message: '#^Loose comparison using \=\= between false and true will always evaluate to false\.$#'
+			identifier: equal.alwaysFalse
+			count: 3
+			path: bin/epaphrodites/Console/Models/lunchServer.php
+
+		-
+			message: '#^Result of && is always false\.$#'
+			identifier: booleanAnd.alwaysFalse
+			count: 1
+			path: bin/epaphrodites/Console/Models/lunchServer.php
+
+		-
+			message: '#^Parameter \#1 \$arg of function escapeshellarg expects string, int given\.$#'
+			identifier: argument.type
+			count: 1
+			path: bin/epaphrodites/Console/Models/modelreloadPythonServer.php
+
+		-
+			message: '#^Parameter \#1 \$arg of function escapeshellarg expects string, int\<min, \-1\>\|int\<1, max\> given\.$#'
+			identifier: argument.type
+			count: 3
+			path: bin/epaphrodites/Console/Models/modelreloadPythonServer.php
+
+		-
+			message: '#^Parameter \#1 \$pid of method Epaphrodites\\epaphrodites\\Console\\Models\\modelreloadPythonServer\:\:stopPythonServer\(\) expects int, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: bin/epaphrodites/Console/Models/modelreloadPythonServer.php
+
+		-
+			message: '#^Ternary operator condition is always true\.$#'
+			identifier: ternary.alwaysTrue
+			count: 1
+			path: bin/epaphrodites/Console/Models/modelreloadPythonServer.php
+
+		-
+			message: '#^Unsafe access to private property Epaphrodites\\epaphrodites\\Console\\Models\\modelseeding\:\:\$Autorise through static\:\:\.$#'
+			identifier: staticClassAccess.privateProperty
+			count: 1
+			path: bin/epaphrodites/Console/Models/modelseeding.php
+
+		-
+			message: '#^Class Epaphrodites\\Epaphrodites\\Console\\Stubs\\StubsUpdateFirstDrivers referenced with incorrect case\: Epaphrodites\\epaphrodites\\Console\\Stubs\\stubsUpdateFirstDrivers\.$#'
+			identifier: class.nameCase
+			count: 2
+			path: bin/epaphrodites/Console/Models/updateFirstDriver.php
+
+		-
+			message: '#^Unsafe access to private property Epaphrodites\\epaphrodites\\Console\\Models\\updateFirstDriver\:\:\$allowedMethods through static\:\:\.$#'
+			identifier: staticClassAccess.privateProperty
+			count: 1
+			path: bin/epaphrodites/Console/Models/updateFirstDriver.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\epaphrodites\\Console\\Stubs\\AddRightsModulesStub\:\:AddToModuleList\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 1
+			path: bin/epaphrodites/Console/Stubs/AddRightsModulesStub.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\epaphrodites\\Console\\Stubs\\AddUserRightsStub\:\:AddToRightList\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 1
+			path: bin/epaphrodites/Console/Stubs/AddUserRightsStub.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$isUp$#'
+			identifier: parameter.notFound
+			count: 2
+			path: bin/epaphrodites/Console/Stubs/ControllerStub.php
+
+		-
+			message: '#^Unreachable statement \- code above always terminates\.$#'
+			identifier: deadCode.unreachable
+			count: 10
+			path: bin/epaphrodites/Console/Stubs/SqlStub.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\epaphrodites\\Console\\Stubs\\StubsControllerFunction\:\:transformToFunction\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 2
+			path: bin/epaphrodites/Console/Stubs/StubsControllerFunction.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\epaphrodites\\Console\\Stubs\\newCommandSubs\:\:commandStubs\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 1
+			path: bin/epaphrodites/Console/Stubs/newCommandSubs.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\epaphrodites\\Console\\Stubs\\newCommandSubs\:\:modelStubs\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 1
+			path: bin/epaphrodites/Console/Stubs/newCommandSubs.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\epaphrodites\\Console\\Stubs\\newCommandSubs\:\:settingArguments\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 1
+			path: bin/epaphrodites/Console/Stubs/newCommandSubs.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\epaphrodites\\Console\\Stubs\\pythonStubs\:\:loadJsonConfig\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 2
+			path: bin/epaphrodites/Console/Stubs/pythonStubs.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\epaphrodites\\Console\\Stubs\\stubChatbot\:\:JsonContentModel\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 1
+			path: bin/epaphrodites/Console/Stubs/stubChatbot.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\epaphrodites\\Console\\Stubs\\stubChatbot\:\:stubs\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 1
+			path: bin/epaphrodites/Console/Stubs/stubChatbot.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\epaphrodites\\Console\\Stubs\\stubChatbot\:\:transformToFunction\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 1
+			path: bin/epaphrodites/Console/Stubs/stubChatbot.php
+
+		-
+			message: '#^Match expression does not handle remaining value\: string$#'
+			identifier: match.unhandled
+			count: 3
+			path: bin/epaphrodites/Console/Stubs/stubsUpdateFirstDrivers.php
+
+		-
+			message: '#^Class Epaphrodites\\epaphrodites\\Console\\Models\\LunchServer referenced with incorrect case\: Epaphrodites\\epaphrodites\\Console\\Models\\lunchServer\.$#'
+			identifier: class.nameCase
+			count: 2
+			path: bin/epaphrodites/Console/commands/CommandRunServer.php
+
+		-
+			message: '#^PHPDoc tag @param has invalid value \(array\|\[\] \$array\)\: Unexpected token "\[", expected type at offset 56 on line 3$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: bin/epaphrodites/Contracts/twigRender.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''mongodb'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 1
+			path: bin/epaphrodites/CsrfToken/csrf_secure.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''oracle'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 1
+			path: bin/epaphrodites/CsrfToken/csrf_secure.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''redis'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 1
+			path: bin/epaphrodites/CsrfToken/csrf_secure.php
+
+		-
+			message: '#^Method Epaphrodites\\epaphrodites\\CsrfToken\\csrf_secure\:\:getTokenCrsf\(\) never returns string so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: bin/epaphrodites/CsrfToken/csrf_secure.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between int\<min, \-1\>\|int\<1, max\>\|non\-falsy\-string and 0 will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 1
+			path: bin/epaphrodites/CsrfToken/traits/HashVerify.php
+
+		-
+			message: '#^Loose comparison using \=\= between ''mysql'' and ''oracle'' will always evaluate to false\.$#'
+			identifier: equal.alwaysFalse
+			count: 1
+			path: bin/epaphrodites/CsrfToken/traits/sqlCrsfRequest.php
+
+		-
+			message: '#^Call to function is_null\(\) with string will always evaluate to false\.$#'
+			identifier: function.impossibleType
+			count: 1
+			path: bin/epaphrodites/CsrfToken/validate_token.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''mongodb'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 1
+			path: bin/epaphrodites/CsrfToken/validate_token.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''redis'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 1
+			path: bin/epaphrodites/CsrfToken/validate_token.php
+
+		-
+			message: '#^Binary operation "\." between array and '' \| '' results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: bin/epaphrodites/EpaphMozart/ModulesConfig/ModulesList.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$key with type int is incompatible with native type string\|null\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/epaphrodites/EpaphMozart/ModulesConfig/ModulesList.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$keys with type mixed is not subtype of native type string\|null\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/epaphrodites/EpaphMozart/ModulesConfig/ModulesList.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$paths with type mixed is not subtype of native type string\|null\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/epaphrodites/EpaphMozart/ModulesConfig/ModulesList.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$key with type int is incompatible with native type string\|null\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/epaphrodites/EpaphMozart/ModulesConfig/RighstList.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$key with type string is incompatible with native type int\|null\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/epaphrodites/EpaphMozart/templatesConfig/ConfigDashboardPages.php
+
+		-
+			message: '#^Deprecated in PHP 8\.4\: Parameter \#3 \$previous \(Throwable\) is implicitly nullable via default value null\.$#'
+			identifier: parameter.implicitlyNullable
+			count: 1
+			path: bin/epaphrodites/ErrorsExceptions/epaphroditeException.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$title with type array is incompatible with native type string\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/epaphrodites/ExcelFiles/ExportFiles/ExportFiles.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$datas$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/epaphrodites/ExcelFiles/ExportFiles/ExportFiles.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: bin/epaphrodites/ExcelFiles/ExportFiles/ExportFiles.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$excelFile$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/epaphrodites/ExcelFiles/ImportFiles/FilesExtension.php
+
+		-
+			message: '#^Unreachable statement \- code above always terminates\.$#'
+			identifier: deadCode.unreachable
+			count: 3
+			path: bin/epaphrodites/ExcelFiles/ImportFiles/FilesExtension.php
+
+		-
+			message: '#^PHPDoc tag @return with type array\|bool is not subtype of native type array\.$#'
+			identifier: return.phpDocType
+			count: 1
+			path: bin/epaphrodites/ExcelFiles/ImportFiles/ImportFiles.php
+
+		-
+			message: '#^Variable \$ExcelFiles in isset\(\) always exists and is not nullable\.$#'
+			identifier: isset.variable
+			count: 2
+			path: bin/epaphrodites/ExcelFiles/ImportFiles/ImportFiles.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$string with type mixed is not subtype of native type string\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/epaphrodites/Extension/Filters/SetTwigFilters.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$string with type mixed is not subtype of native type string\|null\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/epaphrodites/Extension/Filters/SetTwigFilters.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$dir$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/epaphrodites/Extension/Functions/SetTwigFunctions.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$page$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/epaphrodites/Extension/Functions/SetTwigFunctions.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$url$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/epaphrodites/Extension/Functions/SetTwigFunctions.php
+
+		-
+			message: '#^Loose comparison using \=\= between false and true will always evaluate to false\.$#'
+			identifier: equal.alwaysFalse
+			count: 1
+			path: bin/epaphrodites/Kernel/runKernel.php
+
+		-
+			message: '#^Property Epaphrodites\\epaphrodites\\Kernel\\runKernel\:\:\$someValue is unused\.$#'
+			identifier: property.unused
+			count: 1
+			path: bin/epaphrodites/Kernel/runKernel.php
+
+		-
+			message: '#^Result of && is always false\.$#'
+			identifier: booleanAnd.alwaysFalse
+			count: 2
+			path: bin/epaphrodites/Kernel/runKernel.php
+
+		-
+			message: '#^Variable \$GetUrl in PHPDoc tag @var does not exist\.$#'
+			identifier: varTag.variableNotFound
+			count: 1
+			path: bin/epaphrodites/Kernel/runKernel.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 2
+			path: bin/epaphrodites/QRCodes/GetQRcode.php
+
+		-
+			message: '#^PHPDoc tag @var for variable \$options contains unknown class Epaphrodites\\epaphrodites\\QRCodes\\QROptions\.$#'
+			identifier: class.notFound
+			count: 2
+			path: bin/epaphrodites/QRCodes/GetQRcode.php
+
+		-
+			message: '#^Call to function is_callable\(\) with callable\(\)\: mixed will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: bin/epaphrodites/api/config/curlSetopt.php
+
+		-
+			message: '#^Offset ''data'' on non\-empty\-array\<mixed, mixed\> on left side of \?\? always exists and is not nullable\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: bin/epaphrodites/api/config/curlSetopt.php
+
+		-
+			message: '#^Variable \$headers in empty\(\) always exists and is not falsy\.$#'
+			identifier: empty.variable
+			count: 1
+			path: bin/epaphrodites/api/config/curlSetopt.php
+
+		-
+			message: '#^Variable \$streamData on left side of \?\? always exists and is not nullable\.$#'
+			identifier: nullCoalesce.variable
+			count: 1
+			path: bin/epaphrodites/api/config/curlSetopt.php
+
+		-
+			message: '#^Loose comparison using \=\= between ''php'' and ''python'' will always evaluate to false\.$#'
+			identifier: equal.alwaysFalse
+			count: 1
+			path: bin/epaphrodites/api/email/SendMail.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\epaphrodites\\api\\email\\ini\\config\:\:configIni\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 1
+			path: bin/epaphrodites/api/email/ini/config.php
+
+		-
+			message: '#^Method Epaphrodites\\epaphrodites\\api\\requests\\requests\:\:request\(\) should return array\{data\: mixed, error\: bool, status\: array\{error\: bool, message\: string\}\|int\} but returns array\{error\: true, status\: 0, message\: ''Failed to encode…''\}\.$#'
+			identifier: return.type
+			count: 1
+			path: bin/epaphrodites/api/requests/requests.php
+
+		-
+			message: '#^Method Epaphrodites\\epaphrodites\\api\\requests\\requests\:\:request\(\) should return array\{data\: mixed, error\: bool, status\: array\{error\: bool, message\: string\}\|int\} but returns array\{error\: true, status\: 0, message\: non\-falsy\-string\}\.$#'
+			identifier: return.type
+			count: 1
+			path: bin/epaphrodites/api/requests/requests.php
+
+		-
+			message: '#^Method Epaphrodites\\epaphrodites\\api\\requests\\requests\:\:request\(\) should return array\{data\: mixed, error\: bool, status\: array\{error\: bool, message\: string\}\|int\} but returns array\{error\: true, status\: int, message\: non\-falsy\-string\}\.$#'
+			identifier: return.type
+			count: 1
+			path: bin/epaphrodites/api/requests/requests.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$customHost$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/epaphrodites/api/requests/requests.php
+
+		-
+			message: '#^Expression in empty\(\) is not falsy\.$#'
+			identifier: empty.expr
+			count: 1
+			path: bin/epaphrodites/auth/SetSessionSetting.php
+
+		-
+			message: '#^Method Epaphrodites\\epaphrodites\\auth\\SetSessionSetting\:\:session_if_not_exist\(\) with return type void returns null but should not return anything\.$#'
+			identifier: return.void
+			count: 1
+			path: bin/epaphrodites/auth/SetSessionSetting.php
+
+		-
+			message: '#^Result of method Epaphrodites\\epaphrodites\\auth\\SetSessionSetting\:\:getSessionIfNotExist\(\) \(void\) is used\.$#'
+			identifier: method.void
+			count: 1
+			path: bin/epaphrodites/auth/SetSessionSetting.php
+
+		-
+			message: '#^Unsafe access to private property Epaphrodites\\epaphrodites\\auth\\SetSessionSetting\:\:\$IS_SSL through static\:\:\.$#'
+			identifier: staticClassAccess.privateProperty
+			count: 3
+			path: bin/epaphrodites/auth/SetSessionSetting.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\epaphrodites\\auth\\SetSessionSetting\:\:hasStarted\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 1
+			path: bin/epaphrodites/auth/SetSessionSetting.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''mongodb'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 1
+			path: bin/epaphrodites/auth/StartUsersSession.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''redis'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 1
+			path: bin/epaphrodites/auth/StartUsersSession.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$sessionOTP$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/epaphrodites/auth/epaphroditesOTP.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 2
+			path: bin/epaphrodites/auth/session_auth.php
+
+		-
+			message: '#^Function shlomo_async\(\) has Exception in PHPDoc @throws tag but it''s not thrown\.$#'
+			identifier: throws.unusedType
+			count: 1
+			path: bin/epaphrodites/cbuild/stubs/shlomo.stub.php
+
+		-
+			message: '#^Function shlomo_async\(\) should return resource but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: bin/epaphrodites/cbuild/stubs/shlomo.stub.php
+
+		-
+			message: '#^Function shlomo_await\(\) has Exception in PHPDoc @throws tag but it''s not thrown\.$#'
+			identifier: throws.unusedType
+			count: 1
+			path: bin/epaphrodites/cbuild/stubs/shlomo.stub.php
+
+		-
+			message: '#^Function shlomo_then\(\) has Exception in PHPDoc @throws tag but it''s not thrown\.$#'
+			identifier: throws.unusedType
+			count: 1
+			path: bin/epaphrodites/cbuild/stubs/shlomo.stub.php
+
+		-
+			message: '#^Call to an undefined method Epaphrodites\\epaphrodites\\chatBot\\chatBot\:\:getBotUsersConnected\(\)\.$#'
+			identifier: method.notFound
+			count: 2
+			path: bin/epaphrodites/chatBot/chatBot.php
+
+		-
+			message: '#^Call to an undefined method Epaphrodites\\epaphrodites\\chatBot\\chatBot\:\:lastUsersQuestion\(\)\.$#'
+			identifier: method.notFound
+			count: 2
+			path: bin/epaphrodites/chatBot/chatBot.php
+
+		-
+			message: '#^Method Epaphrodites\\epaphrodites\\chatBot\\chatBot\:\:answersChanging\(\) should return string but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: bin/epaphrodites/chatBot/chatBot.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$questionArray$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/epaphrodites/chatBot/chatBot.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$userQUestions$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/epaphrodites/chatBot/chatBot.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$wordToRemove$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/epaphrodites/chatBot/chatBot.php
+
+		-
+			message: '#^PHPDoc tag @return with type array is incompatible with native type string\.$#'
+			identifier: return.phpDocType
+			count: 1
+			path: bin/epaphrodites/chatBot/chatBot.php
+
+		-
+			message: '#^Result of method Epaphrodites\\epaphrodites\\chatBot\\modelOne\\makeActions\\botActions\:\:actions\(\) \(void\) is used\.$#'
+			identifier: method.void
+			count: 1
+			path: bin/epaphrodites/chatBot/chatBot.php
+
+		-
+			message: '#^Call to function is_null\(\) with array will always evaluate to false\.$#'
+			identifier: function.impossibleType
+			count: 2
+			path: bin/epaphrodites/chatBot/modelOne/botConfig/jaccardCoefficient.php
+
+		-
+			message: '#^Expression on left side of \?\? is not nullable\.$#'
+			identifier: nullCoalesce.expr
+			count: 1
+			path: bin/epaphrodites/chatBot/modelOne/defaultAnswers/mainEpaphroditesDefaultMessages.php
+
+		-
+			message: '#^Method Epaphrodites\\epaphrodites\\chatBot\\modelOne\\defaultAnswers\\mainEpaphroditesDefaultMessages\:\:answersChanging\(\) should return string but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: bin/epaphrodites/chatBot/modelOne/defaultAnswers/mainEpaphroditesDefaultMessages.php
+
+		-
+			message: '#^Expression on left side of \?\? is not nullable\.$#'
+			identifier: nullCoalesce.expr
+			count: 1
+			path: bin/epaphrodites/chatBot/modelOne/treatment/answersChecking.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$learn$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/epaphrodites/chatBot/processBotAnswers.php
+
+		-
+			message: '#^PHPDoc tag @return with type bool\|null is not subtype of native type bool\.$#'
+			identifier: return.phpDocType
+			count: 1
+			path: bin/epaphrodites/chatBot/processBotAnswers.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$chaine with type mixed is not subtype of native type string\.$#'
+			identifier: parameter.phpDocType
+			count: 2
+			path: bin/epaphrodites/constant/epaphroditeClass.php
+
+		-
+			message: '#^Loose comparison using \=\= between false and true will always evaluate to false\.$#'
+			identifier: equal.alwaysFalse
+			count: 1
+			path: bin/epaphrodites/danho/DanhoAuth.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$datas with type array\|null is not subtype of native type array\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/epaphrodites/danho/DanhoAuth.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$Directory$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/epaphrodites/danho/DanhoAuth.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$Extension$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/epaphrodites/danho/DanhoAuth.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$FileName$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/epaphrodites/danho/DanhoAuth.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$chaines$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/epaphrodites/danho/DanhoAuth.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$datas$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/epaphrodites/danho/DanhoAuth.php
+
+		-
+			message: '#^PHPDoc tag @return with type mixed is not subtype of native type bool\|string\.$#'
+			identifier: return.phpDocType
+			count: 1
+			path: bin/epaphrodites/danho/DanhoAuth.php
+
+		-
+			message: '#^Parameter \#1 \$string of function str_pad expects string, int\<0, 999999\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: bin/epaphrodites/danho/DanhoAuth.php
+
+		-
+			message: '#^Result of && is always false\.$#'
+			identifier: booleanAnd.alwaysFalse
+			count: 1
+			path: bin/epaphrodites/danho/DanhoAuth.php
+
+		-
+			message: '#^Call to function is_bool\(\) with iterable will always evaluate to false\.$#'
+			identifier: function.impossibleType
+			count: 1
+			path: bin/epaphrodites/define/config/traits/currentSubmit.php
+
+		-
+			message: '#^Call to function is_string\(\) with string will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 3
+			path: bin/epaphrodites/define/config/traits/currentSubmit.php
+
+		-
+			message: '#^Expression on left side of \?\? is not nullable\.$#'
+			identifier: nullCoalesce.expr
+			count: 2
+			path: bin/epaphrodites/define/config/traits/currentSubmit.php
+
+		-
+			message: '#^Instanceof between Traversable\<mixed, mixed\> and Traversable will always evaluate to true\.$#'
+			identifier: instanceof.alwaysTrue
+			count: 1
+			path: bin/epaphrodites/define/config/traits/currentSubmit.php
+
+		-
+			message: '#^Result of && is always false\.$#'
+			identifier: booleanAnd.alwaysFalse
+			count: 1
+			path: bin/epaphrodites/define/config/traits/currentSubmit.php
+
+		-
+			message: '#^Result of \|\| is always false\.$#'
+			identifier: booleanOr.alwaysFalse
+			count: 1
+			path: bin/epaphrodites/define/config/traits/currentSubmit.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between string and null will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 2
+			path: bin/epaphrodites/define/config/traits/currentSubmit.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between \*NEVER\* and true will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: bin/epaphrodites/define/config/traits/currentSubmit.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between array\{''\*''\: mixed\} and false will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: bin/epaphrodites/define/config/traits/currentSubmit.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between array\{''\*''\: mixed\} and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: bin/epaphrodites/define/config/traits/currentSubmit.php
+
+		-
+			message: '#^Variable \$key in isset\(\) always exists and is not nullable\.$#'
+			identifier: isset.variable
+			count: 1
+			path: bin/epaphrodites/define/config/traits/currentSubmit.php
+
+		-
+			message: '#^Call to function is_object\(\) with object will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: bin/epaphrodites/define/config/traits/currentVariableNameSpaces.php
+
+		-
+			message: '#^Expression on left side of \?\? is not nullable\.$#'
+			identifier: nullCoalesce.expr
+			count: 1
+			path: bin/epaphrodites/define/config/traits/currentVariableNameSpaces.php
+
+		-
+			message: '#^Result of function header \(void\) is used\.$#'
+			identifier: function.void
+			count: 1
+			path: bin/epaphrodites/env/config/ApiResponses.php
+
+		-
+			message: '#^Call to function is_callable\(\) with callable\(\)\: mixed will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: bin/epaphrodites/env/config/GeneralConfig.php
+
+		-
+			message: '#^Call to function is_resource\(\) with resource will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: bin/epaphrodites/env/config/GeneralConfig.php
+
+		-
+			message: '#^Method Epaphrodites\\epaphrodites\\env\\config\\GeneralConfig\:\:GetSessions\(\) with return type void returns mixed but should not return anything\.$#'
+			identifier: return.void
+			count: 1
+			path: bin/epaphrodites/env/config/GeneralConfig.php
+
+		-
+			message: '#^Method Epaphrodites\\epaphrodites\\env\\config\\GeneralConfig\:\:SetSession\(\) with return type void returns string\|null but should not return anything\.$#'
+			identifier: return.void
+			count: 1
+			path: bin/epaphrodites/env/config/GeneralConfig.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$onData with type mixed is not subtype of native type \(callable\)\|null\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/epaphrodites/env/config/GeneralConfig.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$scriptPath with type mixed is not subtype of native type string\|null\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/epaphrodites/env/config/GeneralConfig.php
+
+		-
+			message: '#^Variable \$process in isset\(\) always exists and is not nullable\.$#'
+			identifier: isset.variable
+			count: 1
+			path: bin/epaphrodites/env/config/GeneralConfig.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$datas with type array\|null is not subtype of native type array\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/epaphrodites/env/env.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$text with type mixed is not subtype of native type string\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/epaphrodites/env/env.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$type with type string\|null is not subtype of native type string\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/epaphrodites/env/env.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$value with type string\|null is not subtype of native type string\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/epaphrodites/env/env.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$Directory$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/epaphrodites/env/env.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$Extension$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/epaphrodites/env/env.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$FileName$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/epaphrodites/env/env.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$chaines$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/epaphrodites/env/env.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$datas$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/epaphrodites/env/env.php
+
+		-
+			message: '#^PHPDoc tag @return with type mixed is not subtype of native type bool\|string\.$#'
+			identifier: return.phpDocType
+			count: 1
+			path: bin/epaphrodites/env/env.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''oracle'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 1
+			path: bin/epaphrodites/env/phpEnv/phpEnv.php
+
+		-
+			message: '#^Match arm comparison between ''mysql'' and ''sqlserver'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 1
+			path: bin/epaphrodites/env/phpEnv/phpEnv.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$file with type int\|null is incompatible with native type string\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/epaphrodites/env/toml/Toml.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$path with type int\|null is incompatible with native type string\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/epaphrodites/env/toml/Toml.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$file$#'
+			identifier: parameter.notFound
+			count: 2
+			path: bin/epaphrodites/env/toml/Toml.php
+
+		-
+			message: '#^Variable \$datasFound in empty\(\) always exists and is not falsy\.$#'
+			identifier: empty.variable
+			count: 1
+			path: bin/epaphrodites/env/toml/requests/updToml.php
+
+		-
+			message: '#^Call to an undefined static method Epaphrodites\\epaphrodites\\heredia\\HerediaApiSwitcher\:\:class\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: bin/epaphrodites/heredia/HerediaApiSwitcher.php
+
+		-
+			message: '#^Offset ''CRSF'' on array\{non\-falsy\-string\} in isset\(\) does not exist\.$#'
+			identifier: isset.offset
+			count: 1
+			path: bin/epaphrodites/heredia/HerediaApiSwitcher.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$key with type mixed is not subtype of native type string\.$#'
+			identifier: parameter.phpDocType
+			count: 2
+			path: bin/epaphrodites/heredia/HerediaApiSwitcher.php
+
+		-
+			message: '#^Parameter \#1 \$datas of static method Epaphrodites\\epaphrodites\\heredia\\HerediaApiSwitcher\:\:noSpace\(\) expects string, array\<mixed\> given\.$#'
+			identifier: argument.type
+			count: 2
+			path: bin/epaphrodites/heredia/HerediaApiSwitcher.php
+
+		-
+			message: '#^Parameter \#1 \$type of function filter_input_array expects 0\|1\|2\|4\|5, int given\.$#'
+			identifier: argument.type
+			count: 1
+			path: bin/epaphrodites/heredia/HerediaApiSwitcher.php
+
+		-
+			message: '#^Result of && is always false\.$#'
+			identifier: booleanAnd.alwaysFalse
+			count: 1
+			path: bin/epaphrodites/heredia/HerediaApiSwitcher.php
+
+		-
+			message: '#^Static method Epaphrodites\\epaphrodites\\heredia\\HerediaApiSwitcher\:\:VerifyKeyGen\(\) is unused\.$#'
+			identifier: method.unused
+			count: 1
+			path: bin/epaphrodites/heredia/HerediaApiSwitcher.php
+
+		-
+			message: '#^Unsafe access to private property Epaphrodites\\epaphrodites\\heredia\\HerediaApiSwitcher\:\:\$allowedMethods through static\:\:\.$#'
+			identifier: staticClassAccess.privateProperty
+			count: 1
+			path: bin/epaphrodites/heredia/HerediaApiSwitcher.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\epaphrodites\\heredia\\HerediaApiSwitcher\:\:GetMethodsAutorisation\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 1
+			path: bin/epaphrodites/heredia/HerediaApiSwitcher.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\epaphrodites\\heredia\\HerediaApiSwitcher\:\:forcingApiTokenVerification\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 1
+			path: bin/epaphrodites/heredia/HerediaApiSwitcher.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\epaphrodites\\heredia\\HerediaApiSwitcher\:\:forcingTokenVerification\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 1
+			path: bin/epaphrodites/heredia/HerediaApiSwitcher.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\epaphrodites\\heredia\\HerediaApiSwitcher\:\:noSpace\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 4
+			path: bin/epaphrodites/heredia/HerediaApiSwitcher.php
+
+		-
+			message: '#^Property Epaphrodites\\epaphrodites\\heredia\\SettingHeredia\:\:\$count is never read, only written\.$#'
+			identifier: property.onlyWritten
+			count: 1
+			path: bin/epaphrodites/heredia/SettingHeredia.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$autorize with type string\|null is not subtype of native type bool\|null\.$#'
+			identifier: parameter.phpDocType
+			count: 2
+			path: bin/epaphrodites/heredia/SwitchersHeredia.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$runner$#'
+			identifier: parameter.notFound
+			count: 2
+			path: bin/epaphrodites/heredia/SwitchersHeredia.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\epaphrodites\\heredia\\SwitchersHeredia\:\:target\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 1
+			path: bin/epaphrodites/heredia/SwitchersHeredia.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$pages$#'
+			identifier: parameter.notFound
+			count: 1
+			path: bin/epaphrodites/yedidiah/AddRights.php
+
+		-
+			message: '#^Parameter \#1 \$usersGroup of method Epaphrodites\\epaphrodites\\yedidiah\\AddRights\:\:hasAccessRight\(\) expects string, int\<min, \-1\>\|int\<1, max\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: bin/epaphrodites/yedidiah/AddRights.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\epaphrodites\\yedidiah\\AddRights\:\:saveJson\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 2
+			path: bin/epaphrodites/yedidiah/AddRights.php
+
+		-
+			message: '#^Variable \$pages in empty\(\) always exists and is not falsy\.$#'
+			identifier: empty.variable
+			count: 1
+			path: bin/epaphrodites/yedidiah/AddRights.php
+
+		-
+			message: '#^Call to an undefined static method Epaphrodites\\epaphrodites\\yedidiah\\Authorize\:\:saveJson\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: bin/epaphrodites/yedidiah/Authorize.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\epaphrodites\\yedidiah\\Authorize\:\:checkAuthorization\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 1
+			path: bin/epaphrodites/yedidiah/Authorize.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$usersGroup with type int\|null is not subtype of native type string\|null\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: bin/epaphrodites/yedidiah/UpdateRights.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\epaphrodites\\yedidiah\\UpdateRights\:\:saveJson\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 1
+			path: bin/epaphrodites/yedidiah/UpdateRights.php
+
+		-
+			message: '#^Unsafe call to private method Epaphrodites\\epaphrodites\\yedidiah\\YedidiaDeleted\:\:saveJson\(\) through static\:\:\.$#'
+			identifier: staticClassAccess.privateMethod
+			count: 1
+			path: bin/epaphrodites/yedidiah/YedidiaDeleted.php
+
+		-
+			message: '#^Call to an undefined static method Epaphrodites\\epaphrodites\\yedidiah\\YedidiaGetRights\:\:saveJson\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: bin/epaphrodites/yedidiah/YedidiaGetRights.php

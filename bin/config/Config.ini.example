@@ -1,0 +1,19 @@
+[1_CONFIGURATION]
+DRIVER = mysql
+DATABASE = college_dev
+HOST = 127.0.0.1
+PORT = 3306
+USER = utilisateur
+PASSWORD = mot_de_passe_fictif
+SOCKET = false
+SOCKET_PATH =
+
+[2_CONFIGURATION]
+DRIVER = sqlite
+DATABASE = tests.sqlite
+HOST = 127.0.0.1
+PORT = 0
+USER =
+PASSWORD =
+SOCKET = false
+SOCKET_PATH =

@@ -1,0 +1,1 @@
+{"version":2,"defects":{"tests\\Feature\\HomepageTest::testHomepageReturns200":1},"times":{"tests\\RunKernelTest::testGetSomeValueReturnsExpectedValue":0.135,"tests\\Feature\\HomepageTest::testHomepageReturns200":0.001}}

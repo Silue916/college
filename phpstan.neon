@@ -1,0 +1,13 @@
+parameters:
+    level: 5
+    paths:
+        - bin
+        - tests
+    bootstrapFiles:
+        - bin/config/SetDirectory.php
+    reportUnmatchedIgnoredErrors: false
+    excludePaths:
+        - bin/epaphrodites/heredia/HerediaApiSwitcher.php
+        - bin/epaphrodites/cbuild/stubs/shlomo.stub.php
+includes:
+    - phpstan-baseline.neon
