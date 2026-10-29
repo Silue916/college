@@ -17,7 +17,14 @@ final class makeGearShift extends Build{
     */
     public final function up():array{
         return [
-            $this->createUsersAccountTable()
+            $this->createUsersAccountTable(),
+            $this->createAnneesScolairesTable(),
+            $this->createPeriodesTable(),
+            $this->createNiveauxTable(),
+            $this->createSeriesTable(),
+            $this->createClassesTable(),
+            $this->createMatieresTable(),
+            $this->createCoefficientsTable()
         ];
     }
 
