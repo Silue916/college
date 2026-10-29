@@ -372,7 +372,7 @@ trait gearQueryChains
      * Load Env variables
      * @return void
      */
-    private static function env():void{
+    public static function env():void{
 
         EnvLoader::init(_ENV_EDITABLE_);
     }    
